@@ -70,6 +70,21 @@ const pecas = [
 
 ]
 
+function renderInventory() {
+    const inventory = document.querySelector('#inventory');
+
+    pecas.forEach(peca => {
+        const element = document.createElement('div');
+        element.textContent = peca.modelo;
+        element.dataset.id = peca.id;
+
+        inventory.appendChild(element);
+    });
+
+}
+
+renderInventory();
+
 const computador = {
     placaMae: null,
     processador: null,
