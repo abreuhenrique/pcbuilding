@@ -78,12 +78,37 @@ function renderInventory() {
         element.textContent = peca.modelo;
         element.dataset.id = peca.id;
 
+        element.classList.add("inventory-item");
+
+        element.draggable = true;
+        element.addEventListener('dragstart', (event) => {
+            event.dataTransfer.setData("text/plain", element.dataset.id);
+        })
+
         inventory.appendChild(element);
     });
 
 }
 
+function configureWorkTable() {
+    const workTable = document.querySelector('#work-table');
+
+    workTable.addEventListener('dragover', (event) => {
+        event.preventDefault();
+    });
+
+    workTable.addEventListener('drop', (event) => {
+        event.preventDefault();
+        const id = event.dataTransfer.getData("text/plain");
+        const peca = buscarPecaPorId(id);
+        if (peca) {
+            instalarPeca(peca);
+        }
+    });
+}
+ 
 renderInventory();
+configureWorkTable();
 
 const computador = {
     placaMae: null,
@@ -157,13 +182,4 @@ function instalarPeca(peca) {
             console.log('Tipo de peça desconhecido.');
     }
 }
-
-instalarPeca(buscarPecaPorId('b550m'));
-instalarPeca(buscarPecaPorId('ryzen5-5600'));
-instalarPeca(buscarPecaPorId('corsair-8GB'));
-instalarPeca(buscarPecaPorId('gtx1660'));
-instalarPeca(buscarPecaPorId('kingston-a400'));
-instalarPeca(buscarPecaPorId('hd-1tb'));
-instalarPeca(buscarPecaPorId('corsair-550w'));
-
 console.log(computador);

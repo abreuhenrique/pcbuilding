@@ -1,0 +1,30 @@
+#game {
+    display: grid;
+    grid-template-areas:
+        "inventory work-table"
+        "actions actions";
+        grid-template-rows: 1fr 80px;
+        grid-template-columns: 160px 1fr;
+}
+
+#inventory {
+    grid-area: inventory;
+}
+
+#work-table {
+    grid-area: work-table;
+}
+
+#actions {
+    grid-area: actions;
+}
+
+.inventory-item {
+    padding: 15px;
+    margin: 1px;
+    border: 1px solid black;
+    cursor:grab;
+}
+.inventory-item:active {
+    cursor:grabbing;
+}
