@@ -132,9 +132,44 @@ function configureDropZones() {
         });
     })
 }
- 
-renderInventory();
-configureDropZones();
+
+function calcConsumption() {
+    let consumption = 0;
+    if (computador.placaMae) consumption += computador.placaMae.consumoWatts;
+    if (computador.processador) consumption += computador.processador.consumoWatts;
+    if (computador.ram) consumption += computador.ram.consumoWatts;
+    if (computador.placaDeVideo) consumption += computador.placaDeVideo.consumoWatts;
+    computador.armazenamentos.forEach(armazenamento => {
+        consumption += armazenamento.consumoWatts;
+    });
+    return consumption;
+}
+
+function checkAssembly() {
+    return computador.placaMae && computador.processador && computador.ram && computador.placaDeVideo && computador.fonte && computador.armazenamentos.length > 0;
+}
+
+function turnOnComputer() {
+    if (!checkAssembly()) {
+        return false;
+    } else if (calcConsumption() > computador.fonte.potenciaWatts) {
+            console.log("Fonte insuficiente.");
+            return false;
+        } else {
+            console.log("Computador ligado com sucesso!");
+            return true;
+        }
+    } 
+
+const turnOnButton = document.querySelector('#turn-on');
+
+turnOnButton.addEventListener('click', () => {
+    console.log("Consumo do PC: " + calcConsumption());
+    console.log("PC Montado Corretamente: " + checkAssembly());
+    turnOnComputer();
+
+});
+
 const computador = {
     placaMae: null,
     processador: null,
@@ -230,3 +265,6 @@ function instalarPeca(peca) {
             return false;
     }
 }
+
+renderInventory();
+configureDropZones();
