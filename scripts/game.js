@@ -106,10 +106,35 @@ function configureWorkTable() {
         }
     });
 }
+
+function configureDropZones() {
+    const dropZones = document.querySelectorAll('.drop-zone');
+
+    dropZones.forEach(dropZone => {
+        dropZone.addEventListener('dragover', (event) => {
+            event.preventDefault();
+        });
+
+        dropZone.addEventListener('drop', (event) => {
+            event.preventDefault();
+            const id = event.dataTransfer.getData("text/plain");
+            const peca = buscarPecaPorId(id);
+            const tipoAceito = dropZone.dataset.accept;
+            if (peca && peca.tipo === tipoAceito) {
+                const sucesso = instalarPeca(peca);
+                if (sucesso) {
+                    const element = document.createElement('div');
+                    element.textContent = peca.modelo;
+                    element.classList.add("installed-item");
+                    dropZone.appendChild(element);
+                }
+            }
+        });
+    })
+}
  
 renderInventory();
-configureWorkTable();
-
+configureDropZones();
 const computador = {
     placaMae: null,
     processador: null,
@@ -135,51 +160,73 @@ function instalarPeca(peca) {
         case 'placaMae':
             if (computador.placaMae) {
                 console.log('Já existe uma placa-mãe instalada.');
-                return;
+                return false;
             }
+            console.log('Placa-mãe instalada com sucesso.');
             computador.placaMae = peca;
-            console.log(`Placa-mãe ${peca.modelo} instalada.`);
-            break;
+            return true;
+
         case 'processador':
-            if (computador.placaMae && computador.placaMae.socket === peca.socket) {
-                computador.processador = peca;
-                console.log(`Processador ${peca.modelo} instalado.`);
-            } else {
-                console.log('Processador não compatível com a placa-mãe.');
+            if(computador.processador !== null) {
+                console.log('Já existe um processador instalado.');
+                return false;
             }
-            break;
+            if(computador.placaMae && computador.placaMae.socket === peca.socket) {
+                computador.processador = peca;
+                console.log('Processador instalado com sucesso.');
+                return true;
+            } else {
+                console.log('O processador não é compatível com a placa-mãe.');
+                return false;
+            }
 
         case 'ram':
+            if(computador.ram !== null) {
+                console.log('Já existe uma RAM instalada.');
+                return false;
+            }
             if (computador.placaMae && computador.placaMae.ddr === peca.ddr) {
                 computador.ram = peca;
-                console.log(`RAM ${peca.modelo} instalada.`);
+                console.log('RAM instalada com sucesso.');
+                return true;
             } else {
-                console.log('RAM não compatível com a placa-mãe.');
+                console.log('A RAM não é compatível com a placa-mãe.');
+                return false;
             }
-            break;
 
         case 'placaDeVideo':
-            computador.placaDeVideo = peca;
-            console.log(`Placa de vídeo ${peca.modelo} instalada.`);
-            break;
+            if (!computador.placaDeVideo) {
+                computador.placaDeVideo = peca;
+                console.log('Placa de vídeo instalada com sucesso.');
+                return true;
+            } else {
+                console.log('Já existe uma placa de vídeo instalada.');
+                return false;
+            }
 
         case 'armazenamento':
             if (computador.placaMae && computador.satasUsadas < computador.placaMae.entradasSata) {
                 computador.armazenamentos.push(peca);
                 computador.satasUsadas++;
-                console.log(`Armazenamento ${peca.modelo} instalado.`);
+                console.log('Dispositivo de armazenamento instalado com sucesso.');
+                return true;
             } else {
                 console.log('Não há entradas SATA disponíveis na placa-mãe.');
+                return false;
             }
-            break;
 
         case 'fonte':
-            computador.fonte = peca;
-            console.log(`Fonte ${peca.modelo} instalada.`);
-            break;
+            if (computador.fonte === null) {
+                computador.fonte = peca;
+                console.log('Fonte instalada com sucesso.');
+                return true;
+            } else {
+                console.log('Já existe uma fonte instalada.');
+                return false;
+            }
 
         default:
             console.log('Tipo de peça desconhecido.');
+            return false;
     }
 }
-console.log(computador);
