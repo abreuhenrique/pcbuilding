@@ -127,6 +127,7 @@ function configureDropZones() {
                     element.textContent = peca.modelo;
                     element.classList.add("installed-item");
                     dropZone.appendChild(element);
+                    showFeedback(`Peça ${peca.modelo} instalada com sucesso!`, 'success');
                 }
             }
         });
@@ -151,12 +152,13 @@ function checkAssembly() {
 
 function turnOnComputer() {
     if (!checkAssembly()) {
+        showFeedback("Montagem incompleta.", 'error');
         return false;
     } else if (calcConsumption() > computador.fonte.potenciaWatts) {
-            console.log("Fonte insuficiente.");
+            showFeedback("Fonte insuficiente.", 'error');
             return false;
         } else {
-            console.log("Computador ligado com sucesso!");
+            showFeedback("Computador ligado com sucesso!", 'success');
             return true;
         }
     } 
@@ -168,6 +170,36 @@ turnOnButton.addEventListener('click', () => {
     console.log("PC Montado Corretamente: " + checkAssembly());
     turnOnComputer();
 
+});
+
+function showFeedback(text, type = 'info') {
+    const feedbackMessage = document.querySelector('#feedback');
+    feedbackMessage.textContent = text;
+    feedbackMessage.classList.remove('feedback-success', 'feedback-error', 'feedback-info');
+    feedbackMessage.classList.add(`feedback-${type}`);
+}
+
+function resetComputer() {
+    computador.placaMae = null;
+    computador.processador = null;
+    computador.ram = null;
+    computador.placaDeVideo = null;
+    computador.armazenamentos = [];
+    computador.fonte = null;
+    computador.satasUsadas = 0;
+
+    const installedItems = document.querySelectorAll('.installed-item');
+    installedItems.forEach(item => {
+        item.remove();
+    });
+
+    showFeedback("Computador reiniciado.", 'info');
+}
+
+const resetButton = document.querySelector('#reset');
+
+resetButton.addEventListener('click', () => {
+    resetComputer();
 });
 
 const computador = {

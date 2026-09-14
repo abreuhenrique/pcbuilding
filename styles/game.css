@@ -42,3 +42,25 @@
     margin: 1px solid black;
     margin-top: 10px;
 }
+
+#feedback {
+    display: none;
+}
+
+#feedback.feedback-success,
+#feedback.feedback-error,
+#feedback.feedback-info {
+    display: block;
+}
+
+#feedback.feedback-success {
+    color: green;
+}
+
+#feedback.feedback-error {
+    color: red;
+}
+
+#feedback.feedback-info {
+    color: blue;
+}
