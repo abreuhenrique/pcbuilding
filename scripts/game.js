@@ -117,6 +117,7 @@ function configureDropZones() {
 
         dropZone.addEventListener('drop', (event) => {
             event.preventDefault();
+            event.stopPropagation();
             const id = event.dataTransfer.getData("text/plain");
             const peca = buscarPecaPorId(id);
             const tipoAceito = dropZone.dataset.accept;
@@ -128,7 +129,11 @@ function configureDropZones() {
                     element.classList.add("installed-item");
                     dropZone.appendChild(element);
                     showFeedback(`Peça ${peca.modelo} instalada com sucesso!`, 'success');
+                } else {
+                    showFeedback(`Falha ao instalar a peça ${peca.modelo}.`, 'error');
                 }
+            } else if(peca &&peca.tipo !== tipoAceito) {
+                showFeedback(`Peça ${peca.modelo} não pode ser instalada nesta zona.`, 'error');
             }
         });
     })
@@ -197,7 +202,6 @@ function resetComputer() {
 }
 
 const resetButton = document.querySelector('#reset');
-
 resetButton.addEventListener('click', () => {
     resetComputer();
 });
