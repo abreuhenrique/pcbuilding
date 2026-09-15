@@ -1,8 +1,19 @@
 :root {
+    --page-bgcolor: #293744;
+
     --header-bgcolor: #798897;
     --header-items-gbcolor: #eff2f5;
     --header-divider-color: #9fadba;
     --header-text-color: #2e3c49;
+
+    --content-text-color: #fff;
+
+    --footer-links-text-color: #798897;
+    --footer-border-color: #556575;
+
+    --spacing-sm: 5px;
+    --spacing-md: 10px;
+    --spacing-lg: 15px;
 }
 
 * {
@@ -17,33 +28,34 @@ body {
     scroll-behavior: smooth;
     overflow-x: hidden;
     font-family: Arial, Helvetica, sans-serif;
-    /* background-color: ; */ /* TODO: definir cor de fundo site */
+    background-color: var(--page-bgcolor); /* TODO: definir cor de fundo site */
 }
 
 .index-header {
     display: flex;
     justify-content: space-between;
     background-color: var(--header-bgcolor);
-    padding: 10px;
+    padding: var(--spacing-md);
     text-transform: capitalize;
+    color: var(--header-text-color);
 
     .left-side {
         display: inherit;
         align-items: center;
-        gap: 5px;
+        gap: var(--spacing-sm);
 
         .logo-and-name {
             display: inherit;
             align-items: center;
-            gap: 5px;
+            gap: var(--spacing-sm);
 
             >img,
             a {
                 text-decoration: unset;
                 color: var(--header-textcolor);
-                padding: 5px;
+                padding: var(--spacing-sm);
                 background-color: var(--header-items-gbcolor);
-                border-radius: 5px;
+                border-radius: var(--spacing-sm);
             }
         }
 
@@ -57,9 +69,9 @@ body {
             a {
                 text-decoration: none;
                 color: var(--header-textcolor);
-                padding: 5px;
+                padding: var(--spacing-sm);
                 background-color: var(--header-items-gbcolor);
-                border-radius: 5px;
+                border-radius: var(--spacing-sm);
             }
         }
     }
@@ -71,9 +83,9 @@ body {
         .login {
             text-decoration: none;
             color: var(--header-textcolor);
-            padding: 5px;
+            padding: var(--spacing-sm);
             background-color: var(--header-items-gbcolor);
-            border-radius: 5px;
+            border-radius: var(--spacing-sm);
         }
     }
 }
@@ -89,7 +101,8 @@ body {
         display: flex;
         flex-direction: column;
         margin: 30px;
-        gap: 15px;
+        gap: var(--spacing-lg);
+        color: var(--content-text-color);
 
         .game-section {
             display: inherit;
@@ -97,7 +110,7 @@ body {
             justify-content: center;
             align-items: center;
             margin-bottom: 20px;
-            gap: 5px;
+            gap: var(--spacing-sm);
 
             video {
                 background-color: #2e3c49;
@@ -110,18 +123,19 @@ body {
             text-transform: uppercase;
             color: #eff2f5;
             background-color:teal;
-            border-radius: 10px;
-            padding: 10px;
+            border-radius: var(--spacing-md);
+            padding: var(--spacing-md);
         }
 
         .updates {
             display: flex;
-            gap: 15px;
+            gap: 1var(--spacing-sm);
             flex-direction: column;
 
             .update-view {
                 display: inherit;
-                gap: 10px;
+                gap: var(--spacing-md);
+                height: 240px;
                 overflow-x: scroll;
                 scroll-behavior: smooth;
                 scrollbar-width: none; /* hide scroolbar*/
@@ -145,32 +159,32 @@ body {
 }
 
 footer {
-    margin: 10px;
-    border: 1px solid black;
-    padding: 5px;
+    margin: var(--spacing-md);
+    border: 2px solid var(--footer-border-color);
+    padding: var(--spacing-sm);
+    height: 150px;
 
     h3 {
         background-color: var(--header-items-gbcolor);
-        color: var(--header-textcolor);
-        padding: 5px;
-        border-radius: 5px;
+        color: var(--header-text-color);
+        padding: var(--spacing-sm);
+        border-radius: var(--spacing-sm);
         width: fit-content;
     }
 
     .horizontal-divisor {
-        height: 100%;
         border-bottom: 2px solid var(--header-divider-color);
-        margin: 5px 0;
+        margin: var(--spacing-sm) 0;
     }
 
     .footer-grid {
         display: grid;
         grid-template-columns: repeat(3, 2fr);
-        gap: 10px;
+        gap: var(--spacing-md);
 
         strong {
             font-size: large;
-
+            color: var(--content-text-color)
         }
 
         .col-about-us,
@@ -178,13 +192,13 @@ footer {
         .col-contacts {
             display: flex;
             flex-direction: column;
-            padding: 0 10px;
+            padding: 0 var(--spacing-md);
 
             a {
                 all: unset;
                 cursor: pointer;
                 width: fit-content;
-                color: var(--header-bgcolor);
+                color: var(--footer-links-text-color);
             }
         }
     }
