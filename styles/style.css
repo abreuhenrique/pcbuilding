@@ -80,8 +80,9 @@ body {
 
 .index-main {
 
-    img {
+    .hero-img {
         user-select: none;
+        width: 100%;
     }
 
     .content {
@@ -101,7 +102,6 @@ body {
             video {
                 background-color: #2e3c49;
             }
-
         }
 
         .play-now-btn {
@@ -112,6 +112,34 @@ body {
             background-color:teal;
             border-radius: 10px;
             padding: 10px;
+        }
+
+        .updates {
+            display: flex;
+            gap: 15px;
+            flex-direction: column;
+
+            .update-view {
+                display: inherit;
+                gap: 10px;
+                overflow-x: scroll;
+                scroll-behavior: smooth;
+                scrollbar-width: none; /* hide scroolbar*/
+
+                .update_template {
+
+                    .update_template_img {
+                        width: 15rem;
+                    }
+                    .update_template_date_upload {
+                        font-size: 0.7rem;
+                    }
+
+                    .update_template_paragraph {
+                        font-size:0.9rem
+                    }
+                }
+            }
         }
     }
 }
