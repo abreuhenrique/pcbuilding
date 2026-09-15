@@ -17,44 +17,43 @@
             <section id="work-table">
                 Área de Trabalho
 
-                <div class="drop-zone" data-accept="placaMae">
-                    <span>Placa Mãe</span>
-
-                    <div class="drop-zone" data-accept="processador">
-                        <span>Processador</span>
+                <div id="case">
+                    <div class="drop-zone motherboard-zone" data-accept="placaMae">
+                        <span>Placa Mãe</span>
+                            <div class="drop-zone cpu-zone" data-accept="processador">
+                                <span>Processador</span>
+                            </div>
+                            <div class="drop-zone ram-zone" data-accept="ram">
+                                <span>Memória RAM</span>
+                            </div>
+                            <div class="drop-zone video-card-zone" data-accept="placaDeVideo">
+                                <span>Placa de Vídeo</span>
+                            </div>
                     </div>
-
-                    <div class="drop-zone" data-accept="ram">
-                        <span>Memória RAM</span>
+                    <div class="drop-zone storage-zone" data-accept="armazenamento">
+                        <span>Armazenamento</span>
                     </div>
-
-                    <div class="drop-zone" data-accept="placaDeVideo">
-                        <span>Placa de Vídeo</span>
+                    <div class="drop-zone power-supply-zone" data-accept="fonte">
+                        <span>Fonte</span>
                     </div>
-
                 </div>
-
-                <div class="drop-zone" data-accept="armazenamento">
-                    <span>Armazenamento</span>
-                </div>
-
-                <div class="drop-zone" data-accept="fonte">
-                    <span>Fonte</span>
-                </div>
-
-            </section>
-
-            <section id="actions">
-                <h2>Actions</h2>
-                <button id="turn-on">Ligar PC</button>
-                <button id="reset">Reiniciar</button>
-
-                <div id="feedback">
                     
-                </div>
+                    <section id="actions">
+                        <h2>Actions</h2>
 
+                        <button id="turn-on">Ligar PC</button>
+
+                        <button id="reset">Reiniciar</button>
+
+                        <div id="feedback">
+
+                        </div>
+                    </section>
+                        
+                </div>
+                    
             </section>
-        </div>
+                            
     </main>
 
     <script src="../scripts/game.js"></script>
