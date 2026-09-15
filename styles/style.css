@@ -111,10 +111,6 @@ body {
             align-items: center;
             margin-bottom: 20px;
             gap: var(--spacing-sm);
-
-            video {
-                background-color: #2e3c49;
-            }
         }
 
         .play-now-btn {
@@ -139,6 +135,13 @@ body {
                 overflow-x: scroll;
                 scroll-behavior: smooth;
                 scrollbar-width: none; /* hide scroolbar*/
+                justify-content: center; /*Temporário, enquanto não há atualizações*/
+
+                h4 {
+                    display: flex;
+                    align-items: center;
+                    color: var(--footer-links-text-color)
+                }
 
                 .update_template {
 
