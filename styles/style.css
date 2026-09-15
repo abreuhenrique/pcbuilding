@@ -28,7 +28,7 @@ body {
     scroll-behavior: smooth;
     overflow-x: hidden;
     font-family: Arial, Helvetica, sans-serif;
-    background-color: var(--page-bgcolor); /* TODO: definir cor de fundo site */
+    background-color: var(--page-bgcolor);
 }
 
 .index-header {
