@@ -1,50 +1,311 @@
+:root {
+    --ink: #f4ead0;
+    --muted-ink: #b8ad98;
+    --panel: rgba(24, 22, 28, 0.78);
+    --panel-border: rgba(244, 234, 208, 0.22);
+    --accent: #d89248;
+    --success: #9bd17b;
+    --error: #ed8b7c;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+html,
+body {
+    min-width: 1100px;
+    min-height: 100%;
+    margin: 0;
+}
+
+body {
+    overflow: hidden;
+    color: var(--ink);
+    font-family: monospace;
+    background: #17131b url('../assets/game.jpeg') center / cover fixed no-repeat;
+}
+
+body::after {
+    position: fixed;
+    inset: 0;
+    z-index: 0;
+    pointer-events: none;
+    content: '';
+    background: linear-gradient(90deg, rgba(11, 9, 15, 0.28), transparent 42%, rgba(12, 10, 15, 0.08));
+}
+
+header {
+    position: absolute;
+    top: 22px;
+    left: 30px;
+    z-index: 5;
+}
+
+header h1 {
+    margin: 0;
+    color: var(--ink);
+    font-size: 21px;
+    letter-spacing: 0;
+    text-shadow: 2px 2px #17131b, 0 0 12px rgba(0, 0, 0, 0.45);
+}
+
+main,
 #game {
+    min-height: 100vh;
+}
+
+#game {
+    position: relative;
+    z-index: 1;
     display: grid;
-    grid-template-areas:
-        "inventory work-table"
-        "actions actions";
-        grid-template-rows: 1fr 80px;
-        grid-template-columns: 160px 1fr;
+    grid-template-areas: 'inventory work-table';
+    grid-template-columns: 31% 69%;
+    grid-template-rows: 1fr;
 }
 
 #inventory {
     grid-area: inventory;
+    position: relative;
+    z-index: 2;
+    overflow-y: auto;
+    padding: 76px 28px 30px;
+    scrollbar-width: thin;
+    scrollbar-color: rgba(244, 234, 208, 0.35) transparent;
+}
+
+#inventory h2,
+#actions h2,
+.drop-zone > span,
+#work-table {
+    font-size: 0;
+}
+
+#inventory::before {
+    position: absolute;
+    top: 70px;
+    right: 0;
+    bottom: 28px;
+    left: 20px;
+    z-index: -1;
+    border-left: 1px solid rgba(244, 234, 208, 0.08);
+    content: '';
+    background: linear-gradient(90deg, rgba(21, 18, 24, 0.18), rgba(21, 18, 24, 0.04));
 }
 
 #work-table {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 15px;
-    padding: 20px;
+    position: relative;
+    grid-area: work-table;
+    min-width: 0;
+    min-height: 100vh;
+}
+
+#case {
+    position: absolute;
+    top: 23%;
+    left: 7%;
+    width: min(78%, 780px);
+    aspect-ratio: 4 / 3;
+    border: 0;
+    background: url('../assets/components/case-default.png') center / 100% 100% no-repeat;
+    filter: drop-shadow(0 18px 18px rgba(8, 7, 11, 0.48));
 }
 
 .drop-zone {
-    min-height: 100px;
-    border: 2px dashed #777;
+    position: absolute;
+    min-height: 0;
+    border: 1px dashed transparent;
+    transition: border-color 160ms ease, background-color 160ms ease;
 }
 
-#actions {
-    grid-area: actions;
+.drop-zone:hover,
+.drop-zone:has(.installed-item) {
+    border-color: rgba(216, 146, 72, 0.48);
+    background-color: rgba(216, 146, 72, 0.035);
+}
+
+.motherboard-zone {
+    top: 15%;
+    left: 11%;
+    width: 55%;
+    height: 57%;
+}
+
+.motherboard-zone > .installed-item {
+    z-index: 1;
+}
+
+.cpu-zone {
+    z-index: 2;
+    top: 24%;
+    left: 31%;
+    width: 18%;
+    height: 18%;
+}
+
+.ram-zone {
+    z-index: 2;
+    top: 8%;
+    left: 70%;
+    width: 17%;
+    height: 43%;
+}
+
+.video-card-zone {
+    z-index: 2;
+    top: 63%;
+    left: 7%;
+    width: 91%;
+    height: 18%;
+}
+
+.storage-zone {
+    top: 17%;
+    left: 65%;
+    width: 23%;
+    height: 49%;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.power-supply-zone {
+    top: 72%;
+    left: 8%;
+    width: 29%;
+    height: 18%;
 }
 
 .inventory-item {
-    padding: 15px;
-    margin: 1px;
-    border: 1px solid black;
-    cursor:grab;
+    display: inline-flex;
+    width: 47%;
+    min-height: 112px;
+    margin: 0 2% 14px 0;
+    padding: 8px;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    vertical-align: top;
+    border: 1px solid var(--panel-border);
+    background: linear-gradient(145deg, rgba(52, 45, 48, 0.82), var(--panel));
+    box-shadow: 0 7px 12px rgba(10, 8, 12, 0.2);
+    cursor: grab;
+    transition: border-color 160ms ease, transform 160ms ease, background-color 160ms ease;
 }
+
+.inventory-item:hover {
+    border-color: rgba(216, 146, 72, 0.75);
+    background-color: rgba(63, 50, 46, 0.9);
+    transform: translateY(-2px);
+}
+
 .inventory-item:active {
-    cursor:grabbing;
+    cursor: grabbing;
+    transform: scale(0.98);
+}
+
+.inventory-name {
+    display: block;
+    max-width: 100%;
+    overflow: hidden;
+    color: var(--muted-ink);
+    font-size: 11px;
+    line-height: 1.2;
+    text-align: center;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.inventory-img {
+    width: 100%;
+    height: 82px;
+    object-fit: contain;
 }
 
 .installed-item {
-    padding: 10px;
-    margin: 1px solid black;
-    margin-top: 10px;
+    position: absolute;
+    inset: 0;
+    margin: 0;
+    padding: 0;
+    pointer-events: none;
+}
+
+.installed-img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    pointer-events: none;
+}
+
+.motherboard-zone > .installed-item .installed-img {
+    transform: scale(1.02);
+}
+
+.cpu-zone > .installed-item .installed-img {
+    transform: scale(1.85);
+}
+
+.ram-zone > .installed-item .installed-img {
+    transform: rotate(90deg) scale(3.65);
+}
+
+.video-card-zone > .installed-item .installed-img {
+    transform: scale(1.04);
+}
+
+.storage-zone > .installed-item {
+    position: relative;
+    inset: auto;
+    flex: 1;
+    min-height: 0;
+}
+
+.storage-zone > .installed-item .installed-img {
+    transform: scaleX(1.08);
+}
+
+.storage-zone > .installed-item .installed-img[src*='hd-default'] {
+    transform: scaleX(1.28);
+}
+
+.power-supply-zone > .installed-item .installed-img {
+    transform: scaleX(1.3);
+}
+
+#actions {
+    position: absolute;
+    right: 28px;
+    bottom: 24px;
+    z-index: 5;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 9px;
+    border: 1px solid var(--panel-border);
+    background: rgba(24, 22, 28, 0.76);
+    box-shadow: 0 8px 20px rgba(8, 7, 11, 0.28);
+}
+
+#actions button {
+    padding: 8px 11px;
+    border: 1px solid rgba(244, 234, 208, 0.35);
+    color: var(--ink);
+    font: inherit;
+    background: rgba(60, 48, 46, 0.85);
+    cursor: pointer;
+}
+
+#actions button:hover {
+    border-color: var(--accent);
+    background: rgba(95, 62, 44, 0.9);
 }
 
 #feedback {
     display: none;
+    max-width: 230px;
+    font-size: 12px;
+    line-height: 1.25;
 }
 
 #feedback.feedback-success,
@@ -54,131 +315,32 @@
 }
 
 #feedback.feedback-success {
-    color: green;
+    color: var(--success);
 }
 
 #feedback.feedback-error {
-    color: red;
+    color: var(--error);
 }
 
 #feedback.feedback-info {
-    color: blue;
+    color: var(--muted-ink);
 }
 
-#case {
-    position: relative;
+@media (max-height: 760px) {
+    #case {
+        top: 18%;
+        width: min(70%, 690px);
+    }
 
-    width: 700px;
-    height: 650px;
+    #inventory {
+        padding-top: 66px;
+    }
 
-    box-sizing: border-box;
+    .inventory-item {
+        min-height: 92px;
+    }
 
-    border: 3px solid black;
-}
-
-.motherboard-zone {
-    position: absolute;
-
-    top: 40px;
-    left: 50px;
-
-    width: 400px;
-    height: 400px;
-
-    border: 2px dashed black;
-
-    background: rgba(255, 0, 0, 0.2)
-}
-
-.motherboard-zone > .installed-item {
-    background: rgba(0, 0, 255, 0.2);
-
-    transform: scale(1.15);
-
-    z-index: 1;
-}
-
-.cpu-zone {
-    position: absolute;
-    z-index: 2;
-
-    top: 80px;
-    left: 100px;
-
-    width: 100px;
-    height: 100px;
-
-    border: 2px dashed black;
-}
-
-.ram-zone {
-    position: absolute;
-    z-index: 2;
-
-    top: 50px;
-    left: 300px;
-
-    width: 20px;
-    height: 250px;
-
-    border: 2px dashed black;
-}
-
-.video-card-zone {
-    position: absolute;
-    z-index: 2;
-
-    top: 350px;
-    left: 50px;
-
-    width: 600px;
-    height: 100px;
-
-    border: 2px dashed black;
-}
-
-.storage-zone {
-    position: absolute;
-
-    top: 50px;
-    left: 600px;
-
-    width: 150px;
-    height: 250px;
-
-    border: 2px dashed black;
-}
-
-.power-supply-zone {
-    position: absolute;
-
-    top: 518px;
-    left: 0px;
-
-    width: 400px;
-    height: 180px;
-
-    border: 2px dashed black;
-}
-
-.inventory-img {
-    width: 100%;
-    height: 80px;
-    object-fit: contain;
-}
-
-.installed-img {
-    width: 100%;
-    height: 100%;
-    object-fit: contain;
-    display: block;
-
-    pointer-events: none;
-}
-
-.installed-item {
-    position: absolute;
-    inset: 0;
-
-    pointer-events: none;
+    .inventory-img {
+        height: 65px;
+    }
 }
