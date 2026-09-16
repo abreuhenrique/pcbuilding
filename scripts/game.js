@@ -2,11 +2,15 @@ const pecas = [
     {
         id: 'b550m',
         tipo: 'placaMae',
-        modelo: 'B550M',
+        modelo: 'Placa Mãe B550M',
         socket: 'AM4',
         ddr: 'DDR4',
         entradasSata: 4,
-        consumoWatts: 20
+        consumoWatts: 20,
+
+        imgInventory: '../assets/components/motherboard-default.png',
+        imgInstalled: '../assets/components/motherboard-default.png'
+
     },
     
     {
@@ -14,23 +18,32 @@ const pecas = [
         tipo: 'processador',
         modelo: 'Ryzen 5 5600',
         socket: 'AM4',
-        consumoWatts: 65
+        consumoWatts: 65,
+
+        imgInventory: '../assets/components/cpu-default.png',
+        imgInstalled: '../assets/components/cpu-default.png'
     },
 
     {
         id: 'corsair-8GB',
         tipo: 'ram',
-        modelo: 'corsair',
+        modelo: 'Memória Corsair 8GB',
         ddr: 'DDR4',
         capacidadeGB: 8,
-        consumoWatts: 5
+        consumoWatts: 5,
+
+        imgInventory: '../assets/components/ram-default.png',
+        imgInstalled: '../assets/components/ram-default.png'
     },
 
     {
         id: 'gtx1660',
         tipo: 'placaDeVideo',
         modelo: 'GTX 1660',
-        consumoWatts: 120
+        consumoWatts: 120,
+
+        imgInventory: '../assets/components/gpu-default.png',
+        imgInstalled: '../assets/components/gpu-default.png'
     },
 
     {
@@ -39,14 +52,20 @@ const pecas = [
         modelo: 'kingston A400',
         capacidadeGB: 480,
         consumoWatts: 5,
-        sata: true
+        sata: true,
+        
+        imgInventory: '../assets/components/ssd-default.png',
+        imgInstalled: '../assets/components/ssd-default.png'
     },
 
     {
         id: 'corsair-550w',
         tipo: 'fonte',
         modelo: 'Corsair 550W',
-        potenciaWatts: 550
+        potenciaWatts: 550,
+
+        imgInventory: '../assets/components/psu-default.png',
+        imgInstalled: '../assets/components/psu-default.png'
     },
 
     {
@@ -56,7 +75,10 @@ const pecas = [
         socket: 'LGA1200',
         ddr: 'DDR4',
         entradasSata: 6,
-        consumoWatts: 25
+        consumoWatts: 25,
+
+        imgInventory: '../assets/components/motherboard-default.png',
+        imgInstalled: '../assets/components/motherboard-default.png'
     },
 
     {
@@ -65,7 +87,10 @@ const pecas = [
         modelo: 'HD1TB',
         capacidadeGB: 1000,
         consumoWatts: 5,
-        sata: true
+        sata: true,
+
+        imgInventory: '../assets/components/hd-default.png',
+        imgInstalled: '../assets/components/hd-default.png'
     }
 
 ]
@@ -75,7 +100,16 @@ function renderInventory() {
 
     pecas.forEach(peca => {
         const element = document.createElement('div');
-        element.textContent = peca.modelo;
+        const img = document.createElement('img');
+        img.src = peca.imgInventory;
+        img.alt = peca.modelo;
+
+        img.classList.add("inventory-img");
+        element.appendChild(img);
+        const name = document.createElement('span');
+        name.textContent = peca.modelo;
+        name.classList.add("inventory-name");
+        element.appendChild(name);
         element.dataset.id = peca.id;
 
         element.classList.add("inventory-item");
@@ -125,8 +159,15 @@ function configureDropZones() {
                 const sucesso = instalarPeca(peca);
                 if (sucesso) {
                     const element = document.createElement('div');
-                    element.textContent = peca.modelo;
+
+                    const img = document.createElement('img');
+
+                    img.classList.add("installed-img");
+                    img.src = peca.imgInstalled;
+                    img.alt = peca.modelo;
                     element.classList.add("installed-item");
+
+                    element.appendChild(img);
                     dropZone.appendChild(element);
                     showFeedback(`Peça ${peca.modelo} instalada com sucesso!`, 'success');
                 } else {
