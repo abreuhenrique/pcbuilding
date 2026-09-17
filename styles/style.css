@@ -118,7 +118,7 @@ body {
             cursor: pointer;
             text-transform: uppercase;
             color: #eff2f5;
-            background-color:teal;
+            background-color: teal;
             border-radius: var(--spacing-md);
             padding: var(--spacing-md);
         }
@@ -134,8 +134,10 @@ body {
                 height: 240px;
                 overflow-x: scroll;
                 scroll-behavior: smooth;
-                scrollbar-width: none; /* hide scroolbar*/
-                justify-content: center; /*Temporário, enquanto não há atualizações*/
+                scrollbar-width: none;
+                /* hide scroolbar*/
+                justify-content: center;
+                /*Temporário, enquanto não há atualizações*/
 
                 h4 {
                     display: flex;
@@ -148,15 +150,25 @@ body {
                     .update_template_img {
                         width: 15rem;
                     }
+
                     .update_template_date_upload {
                         font-size: 0.7rem;
                     }
 
                     .update_template_paragraph {
-                        font-size:0.9rem
+                        font-size: 0.9rem
                     }
                 }
             }
+        }
+
+        /* About content */
+
+        .About-project-section,
+        .About-group-section {
+            display: flex;
+            flex-direction: column;
+            gap: var(--spacing-sm)
         }
     }
 }
@@ -187,7 +199,8 @@ footer {
 
         strong {
             font-size: large;
-            color: var(--content-text-color)
+            color: var(--content-text-color);
+            margin-bottom: var(--spacing-sm);
         }
 
         .col-about-us,
