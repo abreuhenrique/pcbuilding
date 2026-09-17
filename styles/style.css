@@ -104,7 +104,7 @@ body {
         gap: var(--spacing-lg);
         color: var(--content-text-color);
 
-        .game-section {
+        .game-demo-section {
             display: inherit;
             flex-direction: column;
             justify-content: center;
