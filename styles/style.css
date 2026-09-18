@@ -180,11 +180,22 @@ body {
                 flex-wrap: wrap;
 
                 .collaborator {
+                    display: inherit;
+                    flex-direction: column;
+                    background-color: var(--footer-border-color);
+                    width: fit-content;
+                    align-items: center;
+                    justify-content: center;
+                    padding: var(--spacing-lg);
+                    border-radius: 25px;
                     
-
                     .collaborator-profile-picture {
                         border-radius: 50%;
                         width: 150px;
+                    }
+                    
+                    .collaborator-resume{
+                        width: 200px;
                     }
                 }
             }
