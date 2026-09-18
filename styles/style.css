@@ -168,7 +168,26 @@ body {
         .About-group-section {
             display: flex;
             flex-direction: column;
-            gap: var(--spacing-sm)
+            gap: var(--spacing-sm);
+
+            h4 {
+                margin: var(--spacing-sm) 0;
+            }
+
+            .collaborators {
+                display: inherit;
+                flex-direction: column;
+                flex-wrap: wrap;
+
+                .collaborator {
+                    
+
+                    .collaborator-profile-picture {
+                        border-radius: 50%;
+                        width: 150px;
+                    }
+                }
+            }
         }
     }
 }
