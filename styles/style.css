@@ -165,40 +165,65 @@ body {
         /* About content */
 
         .About-project-section,
-        .About-group-section {
+        .About-group-section,
+        .About-tech-used {
             display: flex;
             flex-direction: column;
             gap: var(--spacing-sm);
+
+            h3 {
+                font-style: italic;
+            }
 
             h4 {
                 margin: var(--spacing-sm) 0;
             }
 
+            /* Exclusive in group section */
             .collaborators {
                 display: inherit;
-                flex-direction: column;
+                flex-direction: row;
                 flex-wrap: wrap;
+                gap: var(--spacing-md);
 
                 .collaborator {
                     display: inherit;
                     flex-direction: column;
+                    flex: 2 0 calc(25% - 10px);
                     background-color: var(--footer-border-color);
                     width: fit-content;
-                    align-items: center;
-                    justify-content: center;
+                    justify-content: stretch;
                     padding: var(--spacing-lg);
                     border-radius: 25px;
-                    
+
                     .collaborator-profile-picture {
+                        align-self: center;
                         border-radius: 50%;
                         width: 150px;
                     }
-                    
-                    .collaborator-resume{
-                        width: 200px;
+
+                    .collaborator-name {
+                        font-size: larger;
+                    }
+
+                    .collaborator-job {
+                        color: var(--header-text-color);
+                        text-transform: uppercase;
+                        font: bold;
+                    }
+
+                    .collaborator-resume {
+                        font-size: small;
                     }
                 }
             }
+
+            /* Exclusice in tech used section */
+            ul {
+                margin-left: 25px;
+            }
+
+
         }
     }
 }
