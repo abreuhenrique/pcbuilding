@@ -31,6 +31,11 @@ body {
     background-color: var(--page-bgcolor);
 }
 
+.notworking {
+    cursor: default;
+    opacity: 0.5;
+}
+
 .index-header {
     display: flex;
     justify-content: space-between;
@@ -63,11 +68,6 @@ body {
             height: 100%;
             border-left: 2px solid var(--header-divider-color);
             margin: 0 1px;
-        }
-
-        a.notworking {
-            cursor: default;
-            opacity: 0.5;
         }
 
         .pages {

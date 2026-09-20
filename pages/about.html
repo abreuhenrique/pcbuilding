@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="/styles/style.css">
+    <script defer src="/scripts/loadCollaborators.js"></script>
     <title>Building PC | About</title>
 </head>
 
@@ -65,118 +66,17 @@
 
                 <h4>Colaboradores</h4>
 
-                <div class="collaborators">
+                <div class="collaborators" id="collaborators-container"></div>
+
+                <template id="collaborator-template">
                     <div class="collaborator">
-                        <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0MDAiIGhlaWdodD0iNDAwIiB2aWV3Qm94PSIwIDAgNDAwIDQwMCI+CiAgPHJlY3QgZmlsbD0iI2UyZTJlMiIgd2lkdGg9IjQwMCIgaGVpZ2h0PSI0MDAiLz4KICA8dGV4dCBmaWxsPSIjNjY2NjY2IiBmb250LWZhbWlseT0ibW9ub3NwYWNlIiBmb250LXNpemU9IjUwIiBmb250LXdlaWdodD0iYm9sZCIgeD0iNTAlIiB5PSI1MCUiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGRvbWluYW50LWJhc2VsaW5lPSJtaWRkbGUiPmNvbGxhYm9yYXRvcjwvdGV4dD4KPC9zdmc+"
-                            alt="collaborator-profile-picture" title="Em breve uma foto real..." draggable="false" class="collaborator-profile-picture">
-                        <p class="collaborator-name">Heitor</p>
-                        <p class="collaborator-job">Desenvolvimento Web</p>
-                        <p class="collaborator-resume">
-                            Atua no desenvolvimento e construção do site em conjunto com Valdersson e Henrique.
-                            Responsável pelo desenvolvimento das páginas Home e About.
-                        </p>
+                        <img src="" alt="collaborator-profile-picture" title="Em breve uma foto real..."
+                            draggable="false" class="collaborator-profile-picture">
+                        <p class="collaborator-name"></p>
+                        <p class="collaborator-job"></p>
+                        <p class="collaborator-resume"></p>
                     </div>
-                    <div class="collaborator">
-                        <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0MDAiIGhlaWdodD0iNDAwIiB2aWV3Qm94PSIwIDAgNDAwIDQwMCI+CiAgPHJlY3QgZmlsbD0iI2UyZTJlMiIgd2lkdGg9IjQwMCIgaGVpZ2h0PSI0MDAiLz4KICA8dGV4dCBmaWxsPSIjNjY2NjY2IiBmb250LWZhbWlseT0ibW9ub3NwYWNlIiBmb250LXNpemU9IjUwIiBmb250LXdlaWdodD0iYm9sZCIgeD0iNTAlIiB5PSI1MCUiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGRvbWluYW50LWJhc2VsaW5lPSJtaWRkbGUiPmNvbGxhYm9yYXRvcjwvdGV4dD4KPC9zdmc+"
-                            alt="collaborator-profile-picture" title="Em breve uma foto real..." draggable="false" class="collaborator-profile-picture">
-                        <p class="collaborator-name">Valdersson</p>
-                        <p class="collaborator-job">Desenvolvimento Web</p>
-                        <p class="collaborator-resume">
-                            Atua no desenvolvimento e construção do site em conjunto com Heitor e Henrique.
-                            Responsável pelo desenvolvimento da página Aprender.
-                        </p>
-                    </div>
-                    <div class="collaborator">
-                        <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0MDAiIGhlaWdodD0iNDAwIiB2aWV3Qm94PSIwIDAgNDAwIDQwMCI+CiAgPHJlY3QgZmlsbD0iI2UyZTJlMiIgd2lkdGg9IjQwMCIgaGVpZ2h0PSI0MDAiLz4KICA8dGV4dCBmaWxsPSIjNjY2NjY2IiBmb250LWZhbWlseT0ibW9ub3NwYWNlIiBmb250LXNpemU9IjUwIiBmb250LXdlaWdodD0iYm9sZCIgeD0iNTAlIiB5PSI1MCUiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGRvbWluYW50LWJhc2VsaW5lPSJtaWRkbGUiPmNvbGxhYm9yYXRvcjwvdGV4dD4KPC9zdmc+"
-                            alt="collaborator-profile-picture" title="Em breve uma foto real..." draggable="false" class="collaborator-profile-picture">
-                        <p class="collaborator-name">Henrique</p>
-                        <p class="collaborator-job">desenvolvimento de jogo</p>
-                        <p class="collaborator-resume">
-                            Responsável pelo Módulo do
-                            Jogo em sua totalidade, com
-                            apoio de Ricardo no design;
-                            também atua no desenvolvimento
-                            e construção do site.
-                        </p>
-                    </div>
-                    <div class="collaborator">
-                        <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0MDAiIGhlaWdodD0iNDAwIiB2aWV3Qm94PSIwIDAgNDAwIDQwMCI+CiAgPHJlY3QgZmlsbD0iI2UyZTJlMiIgd2lkdGg9IjQwMCIgaGVpZ2h0PSI0MDAiLz4KICA8dGV4dCBmaWxsPSIjNjY2NjY2IiBmb250LWZhbWlseT0ibW9ub3NwYWNlIiBmb250LXNpemU9IjUwIiBmb250LXdlaWdodD0iYm9sZCIgeD0iNTAlIiB5PSI1MCUiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGRvbWluYW50LWJhc2VsaW5lPSJtaWRkbGUiPmNvbGxhYm9yYXRvcjwvdGV4dD4KPC9zdmc+"
-                            alt="collaborator-profile-picture" title="Em breve uma foto real..." draggable="false" class="collaborator-profile-picture">
-                        <p class="collaborator-name">Ricardo</p>
-                        <p class="collaborator-job">cONTEÚDO & Design HOME</p>
-                        <p class="collaborator-resume">
-                            Apoia Henrique no design do
-                            Módulo do Jogo, desenvolve o
-                            conteúdo da Home e participa da
-                            construção da apresentação do
-                            projeto.
-                        </p>
-                    </div>
-                    <div class="collaborator">
-                        <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0MDAiIGhlaWdodD0iNDAwIiB2aWV3Qm94PSIwIDAgNDAwIDQwMCI+CiAgPHJlY3QgZmlsbD0iI2UyZTJlMiIgd2lkdGg9IjQwMCIgaGVpZ2h0PSI0MDAiLz4KICA8dGV4dCBmaWxsPSIjNjY2NjY2IiBmb250LWZhbWlseT0ibW9ub3NwYWNlIiBmb250LXNpemU9IjUwIiBmb250LXdlaWdodD0iYm9sZCIgeD0iNTAlIiB5PSI1MCUiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGRvbWluYW50LWJhc2VsaW5lPSJtaWRkbGUiPmNvbGxhYm9yYXRvcjwvdGV4dD4KPC9zdmc+"
-                            alt="collaborator-profile-picture" title="Em breve uma foto real..." draggable="false" class="collaborator-profile-picture">
-                        <p class="collaborator-name">Héber</p>
-                        <p class="collaborator-job">CONTEÚDO DO TUTORIAL</p>
-                        <p class="collaborator-resume">
-                            Responsável pelo
-                            desenvolvimento do conteúdo da
-                            seção de Tutorial, com base nos
-                            wireframes definidos pela equipe.
-                        </p>
-                    </div>
-                    <div class="collaborator">
-                        <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0MDAiIGhlaWdodD0iNDAwIiB2aWV3Qm94PSIwIDAgNDAwIDQwMCI+CiAgPHJlY3QgZmlsbD0iI2UyZTJlMiIgd2lkdGg9IjQwMCIgaGVpZ2h0PSI0MDAiLz4KICA8dGV4dCBmaWxsPSIjNjY2NjY2IiBmb250LWZhbWlseT0ibW9ub3NwYWNlIiBmb250LXNpemU9IjUwIiBmb250LXdlaWdodD0iYm9sZCIgeD0iNTAlIiB5PSI1MCUiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGRvbWluYW50LWJhc2VsaW5lPSJtaWRkbGUiPmNvbGxhYm9yYXRvcjwvdGV4dD4KPC9zdmc+"
-                            alt="collaborator-profile-picture" title="Em breve uma foto real..." draggable="false" class="collaborator-profile-picture">
-                        <p class="collaborator-name">André</p>
-                        <p class="collaborator-job">Conteúdo Página Sobre</p>
-                        <p class="collaborator-resume">
-                            Responsável pelo conteúdo da
-                            aba Sobre (textos, imagens e
-                            vídeos), com base nos wireframes
-                            do Trello; também integra a
-                            equipe de apresentação.
-                        </p>
-                    </div>
-                    <div class="collaborator">
-                        <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0MDAiIGhlaWdodD0iNDAwIiB2aWV3Qm94PSIwIDAgNDAwIDQwMCI+CiAgPHJlY3QgZmlsbD0iI2UyZTJlMiIgd2lkdGg9IjQwMCIgaGVpZ2h0PSI0MDAiLz4KICA8dGV4dCBmaWxsPSIjNjY2NjY2IiBmb250LWZhbWlseT0ibW9ub3NwYWNlIiBmb250LXNpemU9IjUwIiBmb250LXdlaWdodD0iYm9sZCIgeD0iNTAlIiB5PSI1MCUiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGRvbWluYW50LWJhc2VsaW5lPSJtaWRkbGUiPmNvbGxhYm9yYXRvcjwvdGV4dD4KPC9zdmc+"
-                            alt="collaborator-profile-picture" title="Em breve uma foto real..." draggable="false" class="collaborator-profile-picture">
-                        <p class="collaborator-name">Pedro Arthur</p>
-                        <p class="collaborator-job">HARDWARE & COMPATIBILIDADE</p>
-                        <p class="collaborator-resume">
-                            Responsável, junto com Carlos,
-                            pela definição das peças de
-                            hardware utilizadas no jogo, como
-                            placas de vídeo e demais
-                            componentes de PC.
-                        </p>
-                    </div>
-                    <div class="collaborator">
-                        <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0MDAiIGhlaWdodD0iNDAwIiB2aWV3Qm94PSIwIDAgNDAwIDQwMCI+CiAgPHJlY3QgZmlsbD0iI2UyZTJlMiIgd2lkdGg9IjQwMCIgaGVpZ2h0PSI0MDAiLz4KICA8dGV4dCBmaWxsPSIjNjY2NjY2IiBmb250LWZhbWlseT0ibW9ub3NwYWNlIiBmb250LXNpemU9IjUwIiBmb250LXdlaWdodD0iYm9sZCIgeD0iNTAlIiB5PSI1MCUiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGRvbWluYW50LWJhc2VsaW5lPSJtaWRkbGUiPmNvbGxhYm9yYXRvcjwvdGV4dD4KPC9zdmc+"
-                            alt="collaborator-profile-picture" title="Em breve uma foto real..." draggable="false" class="collaborator-profile-picture">
-                        <p class="collaborator-name">Carlos</p>
-                        <p class="collaborator-job">HARDWARE & COMPATIBILIDADE</p>
-                        <p class="collaborator-resume">
-                            Responsável, junto com Pedro
-                            Arthur, pela definição das peças
-                            de hardware utilizadas no jogo,
-                            como placas de vídeo e demais
-                            componentes de PC
-                        </p>
-                    </div>
-                    <div class="collaborator">
-                        <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0MDAiIGhlaWdodD0iNDAwIiB2aWV3Qm94PSIwIDAgNDAwIDQwMCI+CiAgPHJlY3QgZmlsbD0iI2UyZTJlMiIgd2lkdGg9IjQwMCIgaGVpZ2h0PSI0MDAiLz4KICA8dGV4dCBmaWxsPSIjNjY2NjY2IiBmb250LWZhbWlseT0ibW9ub3NwYWNlIiBmb250LXNpemU9IjUwIiBmb250LXdlaWdodD0iYm9sZCIgeD0iNTAlIiB5PSI1MCUiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGRvbWluYW50LWJhc2VsaW5lPSJtaWRkbGUiPmNvbGxhYm9yYXRvcjwvdGV4dD4KPC9zdmc+"
-                            alt="collaborator-profile-picture" title="Em breve uma foto real..." draggable="false" class="collaborator-profile-picture">
-                        <p class="collaborator-name">Yan</p>
-                        <p class="collaborator-job">APRESENTAÇÃO</p>
-                        <p class="collaborator-resume">
-                            Responsável, junto com Ricardo e
-                            André, pela construção da
-                            apresentação do projeto para o
-                            público e para os professores da
-                            disciplina.
-                        </p>
-                    </div>
-                </div>
+                </template>
 
             </div>
 
