@@ -65,6 +65,11 @@ body {
             margin: 0 1px;
         }
 
+        a.notworking {
+            cursor: default;
+            opacity: 0.5;
+        }
+
         .pages {
             a {
                 text-decoration: none;
@@ -92,7 +97,7 @@ body {
 
 .index-main {
 
-    .hero-img {
+    .main-img {
         user-select: none;
         width: 100%;
     }
@@ -179,22 +184,30 @@ body {
                 margin: var(--spacing-sm) 0;
             }
 
+            .note {
+                background-color: var(--header-bgcolor);
+                padding: var(--spacing-md);
+                border-radius: var(--spacing-sm);
+            }
+
             /* Exclusive in group section */
             .collaborators {
                 display: inherit;
                 flex-direction: row;
                 flex-wrap: wrap;
                 gap: var(--spacing-md);
+                align-self: center;
+                width: 90%;
 
                 .collaborator {
                     display: inherit;
                     flex-direction: column;
-                    flex: 2 0 calc(25% - 10px);
+                    flex: 1 0 calc(25% - 10px);
                     background-color: var(--footer-border-color);
                     width: fit-content;
                     justify-content: stretch;
                     padding: var(--spacing-lg);
-                    border-radius: 25px;
+                    border-radius: var(--spacing-lg);
 
                     .collaborator-profile-picture {
                         align-self: center;
@@ -209,21 +222,29 @@ body {
                     .collaborator-job {
                         color: var(--header-text-color);
                         text-transform: uppercase;
-                        font: bold;
-                    }
-
-                    .collaborator-resume {
-                        font-size: small;
+                        font-size: large;
+                        font: bolder;
                     }
                 }
             }
 
-            /* Exclusice in tech used section */
-            ul {
-                margin-left: 25px;
+            .tech-used {
+                display: inherit;
+                flex-direction: row;
+                margin-bottom: var(--spacing-md);
+                gap: var(--spacing-sm);
+                align-self: center;
+                width: 90%;
+
+                .linguagens,
+                .tools {
+                    width: 50%;
+
+                    ul {
+                        margin-left: 25px;
+                    }
+                }
             }
-
-
         }
     }
 }
