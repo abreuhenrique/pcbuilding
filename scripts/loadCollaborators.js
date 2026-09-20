@@ -62,13 +62,14 @@ function renderCollaborators() {
     const container = document.getElementById('collaborators-container');
     const template = document.getElementById('collaborator-template');
 
-    collaboratorsData
-        .sort((a, b) => a.name.localeCompare(b.name)) // order alfabetically
+    if (!container || !template) return;
+
+    // 1. map creates an array of DOM nodes
+    const nodes = collaboratorsData
+        .sort((a, b) => a.name.localeCompare(b.name))
         .map(person => {
-            // Clona a estrutura do template
             const clone = template.content.cloneNode(true);
 
-            // Preenche as informações no nó clonado
             const img = clone.querySelector('.collaborator-profile-picture');
             img.src = person.photo;
             img.alt = `Foto de perfil de ${person.name}`;
@@ -77,9 +78,11 @@ function renderCollaborators() {
             clone.querySelector('.collaborator-job').textContent = person.job;
             clone.querySelector('.collaborator-resume').textContent = person.resume;
 
-            // Adiciona o elemento preenchido à página
-            container.appendChild(clone);
+            return clone;
         });
+
+    // 2. Append all nodes into the container in one DOM operation
+    container.append(...nodes);
 }
 
 // Executa a função após carregar o DOM
