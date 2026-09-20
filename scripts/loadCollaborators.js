@@ -62,7 +62,10 @@ function renderCollaborators() {
   const container = document.getElementById('collaborators-container');
   const template = document.getElementById('collaborator-template');
 
-  collaboratorsData.forEach(person => {
+
+  collaboratorsData
+  .sort((a,b)=> a.name.localeCompare(b.name)) // order alfabetically
+  .forEach(person => {
     // Clona a estrutura do template
     const clone = template.content.cloneNode(true);
 

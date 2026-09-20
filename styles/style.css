@@ -253,7 +253,7 @@ footer {
     margin: var(--spacing-md);
     border: 2px solid var(--footer-border-color);
     padding: var(--spacing-sm);
-    height: 150px;
+    height: fit-content;
 
     h3 {
         background-color: var(--header-items-gbcolor);
