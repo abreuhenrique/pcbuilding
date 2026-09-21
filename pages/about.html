@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/styles/style.css">
+    <script defer src="/scripts/loadCollaborators.js"></script>
+    <title>Building PC | About</title>
+</head>
+
+<body>
+    <header class="index-header">
+        <div class="left-side">
+            <div class="logo-and-name">
+                <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMDAiIGhlaWdodD0iMTAwIiB2aWV3Qm94PSIwIDAgMTAwIDEwMCI+CiAgPHJlY3QgZmlsbD0iI2UyZTJlMiIgd2lkdGg9IjEwMCIgaGVpZ2h0PSIxMDAiLz4KICA8dGV4dCBmaWxsPSIjNjY2NjY2IiBmb250LWZhbWlseT0ibW9ub3NwYWNlIiBmb250LXNpemU9IjEyLjUiIGZvbnQtd2VpZ2h0PSJib2xkIiB4PSI1MCUiIHk9IjUwJSIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZG9taW5hbnQtYmFzZWxpbmU9Im1pZGRsZSI+TG9nbzwvdGV4dD4KPC9zdmc+"
+                    width="18" alt="site_logo">
+                <a href="/index.html">Building PC</a>
+            </div>
+            <div class="vertical-divider"></div> <!-- Como fazer uma divisão vertical melhor? -->
+            <div class="pages">
+                <a href="" class="notworking" title="Em construção...">Aprender</a>
+                <a href="/pages/about.html">Sobre</a>
+                <a href="/pages/game-menu.html">Jogar</a>
+            </div>
+        </div>
+    </header>
+    <main class="index-main">
+
+        <img draggable="false"
+            src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMjAwIiBoZWlnaHQ9IjQwMCIgdmlld0JveD0iMCAwIDEyMDAgNDAwIj4KICA8cmVjdCBmaWxsPSIjZTJlMmUyIiB3aWR0aD0iMTIwMCIgaGVpZ2h0PSI0MDAiLz4KICA8dGV4dCBmaWxsPSIjNjY2NjY2IiBmb250LWZhbWlseT0ibW9ub3NwYWNlIiBmb250LXNpemU9IjUwIiBmb250LXdlaWdodD0iYm9sZCIgeD0iNTAlIiB5PSI1MCUiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGRvbWluYW50LWJhc2VsaW5lPSJtaWRkbGUiPlNvYnJlPC90ZXh0Pgo8L3N2Zz4="
+            alt="main_image" class="main-img">
+
+        <div class="content">
+
+            <section class="About-project-section">
+                <h3>O projeto</h3>
+
+                <p>
+                    O PC Building é site informacional, que conta com metodologia de aprendizagem por meio de um
+                    jogo educativo desenvolvido com o objetivo de ensinar, de forma simples e intuitiva, o
+                    processo de montagem de computadores.</p>
+                <p>
+                    Nosso ambiente virtual combina tutoriais explicativos sobre compatibilidade
+                    entre peças com uma mecânica de jogo de <i>Drag and Drop</i> (arrastar e soltar), na qual o usuário
+                    posiciona os componentes em uma área de trabalho e testa, na prática, os conhecimentos adquiridos.
+                </p>
+
+                <div class="note">
+                    <strong>Nota:</strong> O projeto foi desenvolvido como atividade acadêmica de faculdade, com o
+                    propósito de criar uma
+                    plataforma que auxilie usuários no processo de montagem de computadores, apresentando
+                    informações sobre componentes, compatibilidade entre peças e possíveis configurações de PC.
+                </div>
+
+            </section>
+
+            <div class="About-group-section">
+                <h3>A equipe</h3>
+
+                <p>
+                    O PC Building é resultado do trabalho conjunto de nove integrantes, cada um responsável por uma
+                    frente diferente do projeto — do desenvolvimento do jogo à pesquisa de hardware e à apresentação
+                    final para professores e colegas.
+                </p>
+
+                <h4>Colaboradores</h4>
+
+                <div class="collaborators" id="collaborators-container"></div>
+
+                <template id="collaborator-template">
+                    <div class="collaborator">
+                        <img src="" alt="collaborator-profile-picture" title="Em breve uma foto real..."
+                            draggable="false" class="collaborator-profile-picture">
+                        <p class="collaborator-name"></p>
+                        <p class="collaborator-job"></p>
+                        <p class="collaborator-resume"></p>
+                    </div>
+                </template>
+
+            </div>
+
+            <div class="About-tech-used">
+                <h3>Tecnologias Utilizadas</h3>
+
+                <div class="tech-used">
+                    <div class="linguagens">
+                        <h4>Linguagens</h4>
+
+                        <ul>
+                            <li>
+                                <strong>HTML5</strong> — linguagem de marcação usada para
+                                definir a estrutura das páginas;
+                            </li>
+                            <li>
+                                <strong>CSS</strong> — folhas de estilo utilizadas para estilizar as páginas HTML;
+                            </li>
+                            <li>
+                                <strong>JavaScript</strong> — linguagem dinâmica e fracamente tipada,
+                                responsável pela lógica do jogo e pela mecânica de Drag and Drop.
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div class="tools">
+                        <h4>Ferramentas</h4>
+
+                        <ul>
+                            <li><strong>Git e GitHub</strong> — versionamento e colaboração no código;</li>
+                            <li><strong>Trello (Kanban)</strong> — organização das tarefas da equipe e wireframes;</li>
+                            <li><strong>Wireframes</strong> — base visual para o desenvolvimento das páginas do site.
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="note">
+                    <strong>Nota:</strong> O JavaScript atua no comportamento do site como um todo, sendo a linguagem
+                    responsável por toda a
+                    lógica de funcionamento do jogo, incluindo a verificação de compatibilidade entre os componentes
+                    selecionados pelo usuário.
+                </div>
+
+
+            </div>
+        </div class="content">
+
+    </main>
+    <footer>
+        <h3>Building PC</h3>
+        <div class="horizontal-divisor"></div>
+        <div class="footer-grid">
+            <div class="col-about-us">
+                <strong>Sobre Nós</strong>
+                <a href="/pages/about.html" title="Você já está na página!">Sobre</a>
+            </div>
+            <div class="col-contribute">
+                <strong>Contribua com o projeto</strong>
+                <a href="https://github.com/abreuhenrique/pcbuilding">Repositório</a>
+            </div>
+            <div class="col-contacts">
+                <strong>Contatos <small>(Ainda em contrução...)</small></strong>
+                <a href="mailto:">Email</a>
+                <a href="http://" target="_blank" rel="noopener noreferrer">Discord</a>
+                <a href="http://" target="_blank" rel="noopener noreferrer">Github</a>
+            </div>
+        </div>
+    </footer>
+</body>
+
+</html>
