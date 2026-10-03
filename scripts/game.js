@@ -8,8 +8,8 @@ const pecas = [
         entradasSata: 4,
         consumoWatts: 20,
 
-        imgInventory: '../assets/components/motherboard-default.png',
-        imgInstalled: '../assets/components/motherboard-default.png'
+        imgInventory: '../assets/components/placa-mae.png',
+        imgInstalled: '../assets/components/placa-mae.png'
 
     },
     
@@ -20,8 +20,8 @@ const pecas = [
         socket: 'AM4',
         consumoWatts: 65,
 
-        imgInventory: '../assets/components/cpu-default.png',
-        imgInstalled: '../assets/components/cpu-default.png'
+        imgInventory: '../assets/components/processador.png',
+        imgInstalled: '../assets/components/processador.png'
     },
 
     {
@@ -32,8 +32,8 @@ const pecas = [
         capacidadeGB: 8,
         consumoWatts: 5,
 
-        imgInventory: '../assets/components/ram-default.png',
-        imgInstalled: '../assets/components/ram-default.png'
+        imgInventory: '../assets/components/ram.png',
+        imgInstalled: '../assets/components/ram.png'
     },
 
     {
@@ -42,8 +42,8 @@ const pecas = [
         modelo: 'GTX 1660',
         consumoWatts: 120,
 
-        imgInventory: '../assets/components/gpu-default.png',
-        imgInstalled: '../assets/components/gpu-default.png'
+        imgInventory: '../assets/components/placa-de-video.png',
+        imgInstalled: '../assets/components/placa-de-video.png'
     },
 
     {
@@ -54,8 +54,8 @@ const pecas = [
         consumoWatts: 5,
         sata: true,
         
-        imgInventory: '../assets/components/ssd-default.png',
-        imgInstalled: '../assets/components/ssd-default.png'
+        imgInventory: '../assets/components/ssd.png',
+        imgInstalled: '../assets/components/ssd.png'
     },
 
     {
@@ -64,8 +64,8 @@ const pecas = [
         modelo: 'Corsair 550W',
         potenciaWatts: 550,
 
-        imgInventory: '../assets/components/psu-default.png',
-        imgInstalled: '../assets/components/psu-default.png'
+        imgInventory: '../assets/components/fonte.png',
+        imgInstalled: '../assets/components/fonte.png'
     },
 
     {
@@ -77,8 +77,8 @@ const pecas = [
         entradasSata: 6,
         consumoWatts: 25,
 
-        imgInventory: '../assets/components/motherboard-default.png',
-        imgInstalled: '../assets/components/motherboard-default.png'
+        imgInventory: '../assets/components/placa-mae.png',
+        imgInstalled: '../assets/components/placa-mae.png'
     },
 
     {
@@ -89,23 +89,42 @@ const pecas = [
         consumoWatts: 5,
         sata: true,
 
-        imgInventory: '../assets/components/hd-default.png',
-        imgInstalled: '../assets/components/hd-default.png'
+        imgInventory: '../assets/components/hd.png',
+        imgInstalled: '../assets/components/hd.png'
     }
 
 ]
+
+function createComponentArt(peca, installed = false) {
+    const art = document.createElement('div');
+    const img = document.createElement('img');
+    const src = installed ? peca.imgInstalled : peca.imgInventory;
+
+    art.className = 'component-art';
+    art.dataset.asset = src.split('/').pop().replace('.png', '');
+    img.src = src;
+    img.alt = peca.modelo;
+    img.draggable = false;
+    img.className = installed ? 'installed-img' : 'inventory-img';
+    art.appendChild(img);
+    return art;
+}
+
+function clearDropHighlights() {
+    document.querySelectorAll('.drop-zone').forEach(zone => {
+        zone.classList.remove('is-available', 'is-over');
+    });
+}
 
 function renderInventory() {
     const inventory = document.querySelector('#inventory');
 
     pecas.forEach(peca => {
         const element = document.createElement('div');
-        const img = document.createElement('img');
-        img.src = peca.imgInventory;
-        img.alt = peca.modelo;
-
-        img.classList.add("inventory-img");
-        element.appendChild(img);
+        const preview = document.createElement('div');
+        preview.className = 'inventory-preview';
+        preview.appendChild(createComponentArt(peca));
+        element.appendChild(preview);
         const name = document.createElement('span');
         name.textContent = peca.modelo;
         name.classList.add("inventory-name");
@@ -117,7 +136,12 @@ function renderInventory() {
         element.draggable = true;
         element.addEventListener('dragstart', (event) => {
             event.dataTransfer.setData("text/plain", element.dataset.id);
-        })
+            event.dataTransfer.effectAllowed = 'copy';
+            document.querySelectorAll('.drop-zone').forEach(zone => {
+                zone.classList.toggle('is-available', zone.dataset.accept === peca.tipo);
+            });
+        });
+        element.addEventListener('dragend', clearDropHighlights);
 
         inventory.appendChild(element);
     });
@@ -147,11 +171,20 @@ function configureDropZones() {
     dropZones.forEach(dropZone => {
         dropZone.addEventListener('dragover', (event) => {
             event.preventDefault();
+            event.stopPropagation();
+            dropZone.classList.toggle('is-over', dropZone.classList.contains('is-available'));
+        });
+
+        dropZone.addEventListener('dragleave', (event) => {
+            if (!dropZone.contains(event.relatedTarget)) {
+                dropZone.classList.remove('is-over');
+            }
         });
 
         dropZone.addEventListener('drop', (event) => {
             event.preventDefault();
             event.stopPropagation();
+            clearDropHighlights();
             const id = event.dataTransfer.getData("text/plain");
             const peca = buscarPecaPorId(id);
             const tipoAceito = dropZone.dataset.accept;
@@ -160,14 +193,9 @@ function configureDropZones() {
                 if (sucesso) {
                     const element = document.createElement('div');
 
-                    const img = document.createElement('img');
-
-                    img.classList.add("installed-img");
-                    img.src = peca.imgInstalled;
-                    img.alt = peca.modelo;
                     element.classList.add("installed-item");
-
-                    element.appendChild(img);
+                    element.dataset.id = peca.id;
+                    element.appendChild(createComponentArt(peca, true));
                     dropZone.appendChild(element);
                     showFeedback(`Peça ${peca.modelo} instalada com sucesso!`, 'success');
                 } else {
@@ -226,6 +254,7 @@ function showFeedback(text, type = 'info') {
 }
 
 function resetComputer() {
+    clearDropHighlights();
     computador.placaMae = null;
     computador.processador = null;
     computador.ram = null;

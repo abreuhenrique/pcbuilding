@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Work Table</title>
+    <title>Mesa de montagem | PC Building</title>
     <link rel="stylesheet" href="../styles/game.css">
 </head>
 <body>
@@ -14,49 +14,40 @@
                 <h2>Inventário</h2>
             </section>
 
-            <section id="work-table">
-                Área de Trabalho
-
+            <section id="work-table" aria-label="Mesa de montagem">
                 <div id="case">
+                    <div class="case-art component-art" data-asset="gabinete">
+                        <img src="../assets/components/gabinete.png" alt="Gabinete na mesa de montagem" draggable="false">
+                    </div>
                     <div class="drop-zone motherboard-zone" data-accept="placaMae">
-                        <span>Placa Mãe</span>
-                            <div class="drop-zone cpu-zone" data-accept="processador">
-                                <span>Processador</span>
-                            </div>
-                            <div class="drop-zone ram-zone" data-accept="ram">
-                                <span>Memória RAM</span>
-                            </div>
-                            <div class="drop-zone video-card-zone" data-accept="placaDeVideo">
-                                <span>Placa de Vídeo</span>
-                            </div>
+                        <span>Placa-mãe</span>
+                        <div class="drop-zone cpu-zone" data-accept="processador">
+                            <span>Processador</span>
+                        </div>
+                        <div class="drop-zone ram-zone" data-accept="ram">
+                            <span>Memória RAM</span>
+                        </div>
+                        <div class="drop-zone video-card-zone" data-accept="placaDeVideo">
+                            <span>Placa de Vídeo</span>
+                        </div>
                     </div>
                     <div class="drop-zone storage-zone" data-accept="armazenamento">
-                        <span>Armazenamento</span>
+                        <span>HD / SSD</span>
                     </div>
                     <div class="drop-zone power-supply-zone" data-accept="fonte">
                         <span>Fonte</span>
                     </div>
                 </div>
-                    
-                    <section id="actions">
-                        <h2>Actions</h2>
-
-                        <button id="turn-on">Ligar PC</button>
-
-                        <button id="reset">Reiniciar</button>
-
-                        <div id="feedback">
-
-                        </div>
-                    </section>
-                        
-                </div>
-                    
+                <section id="actions">
+                    <h2>Ações</h2>
+                    <button id="turn-on">Ligar PC</button>
+                    <button id="reset">Reiniciar</button>
+                    <div id="feedback" role="status" aria-live="polite"></div>
+                </section>
             </section>
-                            
+        </div>
     </main>
 
     <script src="../scripts/game.js"></script>
-
 </body>
 </html>
