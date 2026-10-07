@@ -34,9 +34,22 @@ const pecas = [
         modelo: 'Ryzen 5 5600',
         socket: 'AM4',
         consumoWatts: 65,
+        assetKey: 'processador-ryzen-5600',
 
-        imgInventory: '../assets/components/processador.png',
-        imgInstalled: '../assets/components/processador.png'
+        imgInventory: '../assets/components/processador_encaixe_pixelart ryzen 5 5600.png',
+        imgInstalled: '../assets/components/processador_encaixe_pixelart ryzen 5 5600.png'
+    },
+
+    {
+        id: 'intel-i5-12400',
+        tipo: 'processador',
+        modelo: 'Intel Core i5-12400',
+        socket: 'LGA1700',
+        consumoWatts: 65,
+        assetKey: 'processador-intel-i5',
+
+        imgInventory: '../assets/components/Processador_encaixe_intel_i5.png',
+        imgInstalled: '../assets/components/Processador_encaixe_intel_i5.png'
     },
 
     {
@@ -146,7 +159,7 @@ function createComponentArt(peca, installed = false) {
     const src = installed ? peca.imgInstalled : peca.imgInventory;
 
     art.className = 'component-art';
-    art.dataset.asset = src.split('/').pop().replace('.png', '');
+    art.dataset.asset = peca.assetKey || src.split('/').pop().replace('.png', '');
     img.src = src;
     img.alt = peca.modelo;
     img.draggable = false;
@@ -159,6 +172,41 @@ function clearDropHighlights() {
     document.querySelectorAll('.drop-zone').forEach(zone => {
         zone.classList.remove('is-available', 'is-over');
     });
+}
+
+function getPieceDetails(peca) {
+    switch (peca.tipo) {
+        case 'placaMae':
+            return [
+                `Socket: ${peca.socket}`,
+                `Memória: ${peca.ddr}`,
+                `Portas SATA: ${peca.entradasSata}`,
+                `Consumo: ${peca.consumoWatts} W`
+            ];
+        case 'processador':
+            return [
+                `Socket: ${peca.socket}`,
+                `Consumo: ${peca.consumoWatts} W`
+            ];
+        case 'ram':
+            return [
+                `Tipo: ${peca.ddr}`,
+                `Capacidade: ${peca.capacidadeGB} GB`,
+                `Consumo: ${peca.consumoWatts} W`
+            ];
+        case 'placaDeVideo':
+            return [`Consumo: ${peca.consumoWatts} W`];
+        case 'armazenamento':
+            return [
+                `Capacidade: ${peca.capacidadeGB} GB`,
+                `Interface: ${peca.sata ? 'SATA' : '—'}`,
+                `Consumo: ${peca.consumoWatts} W`
+            ];
+        case 'fonte':
+            return [`Potência: ${peca.potenciaWatts} W`];
+        default:
+            return [];
+    }
 }
 
 function renderInventory() {
@@ -174,19 +222,39 @@ function renderInventory() {
         name.textContent = peca.modelo;
         name.classList.add("inventory-name");
         element.appendChild(name);
+
+        const tooltip = document.createElement('div');
+        const tooltipTitle = document.createElement('strong');
+        const tooltipDetails = document.createElement('span');
+        tooltip.classList.add('inventory-tooltip');
+        tooltipTitle.textContent = peca.modelo;
+        tooltipDetails.textContent = getPieceDetails(peca).join('\n');
+        tooltip.appendChild(tooltipTitle);
+        tooltip.appendChild(tooltipDetails);
+        element.appendChild(tooltip);
+
         element.dataset.id = peca.id;
 
         element.classList.add("inventory-item");
 
         element.draggable = true;
         element.addEventListener('dragstart', (event) => {
+            element.classList.add('is-dragging');
             event.dataTransfer.setData("text/plain", element.dataset.id);
             event.dataTransfer.effectAllowed = 'copy';
+            event.dataTransfer.setDragImage(
+                preview,
+                preview.offsetWidth / 2,
+                preview.offsetHeight / 2
+            );
             document.querySelectorAll('.drop-zone').forEach(zone => {
                 zone.classList.toggle('is-available', zone.dataset.accept === peca.tipo);
             });
         });
-        element.addEventListener('dragend', clearDropHighlights);
+        element.addEventListener('dragend', () => {
+            element.classList.remove('is-dragging');
+            clearDropHighlights();
+        });
 
         inventory.appendChild(element);
     });
@@ -283,12 +351,42 @@ function turnOnComputer() {
     } 
 
 const turnOnButton = document.querySelector('#turn-on');
+const completionScreen = document.querySelector('#completion-screen');
+const completionVideo = document.querySelector('#completion-video');
+const closeCompletionButton = document.querySelector('#close-completion');
+
+function showCompletionVideo() {
+    completionScreen.hidden = false;
+    completionScreen.setAttribute('aria-hidden', 'false');
+    document.body.classList.add('completion-open');
+    completionVideo.currentTime = 0;
+    completionVideo.play().catch(() => {
+        showFeedback("Montagem concluída! Pressione reproduzir para assistir ao vídeo.", 'success');
+    });
+    closeCompletionButton.focus();
+}
+
+function hideCompletionVideo() {
+    completionVideo.pause();
+    completionScreen.hidden = true;
+    completionScreen.setAttribute('aria-hidden', 'true');
+    document.body.classList.remove('completion-open');
+    turnOnButton.focus();
+}
 
 turnOnButton.addEventListener('click', () => {
     console.log("Consumo do PC: " + calcConsumption());
     console.log("PC Montado Corretamente: " + checkAssembly());
-    turnOnComputer();
+    if (turnOnComputer()) {
+        showCompletionVideo();
+    }
 
+});
+
+closeCompletionButton.addEventListener('click', hideCompletionVideo);
+
+completionVideo.addEventListener('ended', () => {
+    completionVideo.pause();
 });
 
 function showFeedback(text, type = 'info') {
@@ -300,6 +398,9 @@ function showFeedback(text, type = 'info') {
 
 function resetComputer() {
     clearDropHighlights();
+    if (!completionScreen.hidden) {
+        hideCompletionVideo();
+    }
     computador.placaMae = null;
     computador.processador = null;
     computador.ram = null;

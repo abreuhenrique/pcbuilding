@@ -32,6 +32,8 @@ body::after {
     background: linear-gradient(90deg, rgba(11, 9, 15, 0.28), transparent 42%, rgba(12, 10, 15, 0.08));
 }
 
+body.completion-open { overflow: hidden; }
+
 header {
     position: absolute;
     top: 22px;
@@ -94,8 +96,6 @@ header h1 {
     filter: drop-shadow(0 14px 14px rgba(8, 7, 11, 0.48));
 }
 
-/* Display the visible bounds of each PNG without changing the source files.
-   Crop coordinates are measured in source pixels; all displayed sizes remain proportional. */
 .component-art {
     position: relative;
     display: block;
@@ -148,6 +148,55 @@ header h1 {
 [data-asset='fonte'] {
     --source-w: 1699; --source-h: 926;
     --crop-x: 489; --crop-y: 251; --crop-w: 734; --crop-h: 474;
+}
+
+[data-asset='placa-mae-b550m'] {
+    --source-w: 2760; --source-h: 1504;
+    --crop-x: 790; --crop-y: 8; --crop-w: 1266; --crop-h: 1483;
+}
+[data-asset='placa-mae-b660m'] {
+    --source-w: 1678; --source-h: 937;
+    --crop-x: 289; --crop-y: 10; --crop-w: 1132; --crop-h: 927;
+}
+
+.motherboard-zone > .installed-item > [data-asset='placa-mae-b660m'] {
+    aspect-ratio: 1266 / 1483;
+}
+[data-asset='processador-ryzen-5600'] {
+    --source-w: 2816; --source-h: 1536;
+    --crop-x: 759; --crop-y: 185; --crop-w: 1300; --crop-h: 1185;
+}
+[data-asset='processador-intel-i5'] {
+    --source-w: 1698; --source-h: 926;
+    --crop-x: 472; --crop-y: 102; --crop-w: 784; --crop-h: 732;
+}
+[data-asset='memoria-ram-ddr3'] {
+    --source-w: 2760; --source-h: 1504;
+    --crop-x: 1279; --crop-y: 60; --crop-w: 254; --crop-h: 1370;
+}
+[data-asset='memoria-ram-ddr4-fury'] {
+    --source-w: 1679; --source-h: 937;
+    --crop-x: 764; --crop-y: 32; --crop-w: 161; --crop-h: 866;
+}
+[data-asset='placa-video-gtx1660'] {
+    --source-w: 2816; --source-h: 1536;
+    --crop-x: 297; --crop-y: 341; --crop-w: 2241; --crop-h: 922;
+}
+[data-asset='placa-video-rx580'] {
+    --source-w: 1678; --source-h: 937;
+    --crop-x: 59; --crop-y: 156; --crop-w: 1566; --crop-h: 696;
+}
+[data-asset='ssd-a400'] {
+    --source-w: 2816; --source-h: 1536;
+    --crop-x: 396; --crop-y: 689; --crop-w: 2022; --crop-h: 169;
+}
+[data-asset='fonte-550w'] {
+    --source-w: 2816; --source-h: 1536;
+    --crop-x: 819; --crop-y: 419; --crop-w: 1202; --crop-h: 777;
+}
+[data-asset='hd-1tb'] {
+    --source-w: 2816; --source-h: 1536;
+    --crop-x: 649; --crop-y: 677; --crop-w: 1519; --crop-h: 287;
 }
 
 .case-art {
@@ -252,6 +301,7 @@ header h1 {
 }
 
 .inventory-item {
+    position: relative;
     display: flex;
     min-width: 0;
     padding: 10px;
@@ -271,6 +321,50 @@ header h1 {
 }
 
 .inventory-item:active { cursor: grabbing; }
+
+.inventory-tooltip {
+    position: absolute;
+    inset: 8px;
+    z-index: 3;
+    display: flex;
+    padding: 10px;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: 6px;
+    border: 1px solid rgba(216, 146, 72, 0.7);
+    color: var(--muted-ink);
+    font-size: 10px;
+    line-height: 1.35;
+    text-align: center;
+    white-space: pre-line;
+    background: linear-gradient(145deg, rgba(56, 43, 42, 0.98), rgba(24, 22, 28, 0.98));
+    box-shadow: 0 8px 18px rgba(8, 7, 11, 0.48), inset 0 0 0 1px rgba(244, 234, 208, 0.05);
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(5px);
+    pointer-events: none;
+    transition: opacity 140ms ease, transform 140ms ease, visibility 140ms ease;
+}
+
+.inventory-tooltip strong {
+    color: var(--ink);
+    font-size: 11px;
+    line-height: 1.2;
+}
+
+.inventory-item:hover .inventory-tooltip {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
+.inventory-item.is-dragging .inventory-tooltip {
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(5px);
+    transition: none;
+}
 
 .inventory-preview {
     display: flex;
@@ -357,6 +451,50 @@ header h1 {
 #feedback.feedback-error { color: var(--error); }
 #feedback.feedback-info { color: var(--muted-ink); }
 
+.completion-screen {
+    position: fixed;
+    inset: 0;
+    z-index: 20;
+    background: #09080b;
+}
+
+.completion-screen[hidden] { display: none; }
+
+.completion-dialog {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+
+#close-completion {
+    position: absolute;
+    right: 24px;
+    bottom: 24px;
+    z-index: 2;
+    padding: 12px 16px;
+    border: 1px solid rgba(216, 146, 72, 0.85);
+    color: var(--ink);
+    font: 13px/1.2 monospace;
+    background: rgba(24, 22, 28, 0.92);
+    box-shadow: 0 7px 18px rgba(0, 0, 0, 0.4);
+    cursor: pointer;
+}
+
+#close-completion:hover,
+#close-completion:focus-visible {
+    border-color: var(--accent);
+    background: rgba(95, 62, 44, 0.9);
+}
+
+#completion-video {
+    display: block;
+    width: 100%;
+    height: 100%;
+    background: #09080b;
+    object-fit: cover;
+}
+
 @media (max-height: 760px) and (min-width: 761px) {
     :root { --preview-height: 64px; }
     #inventory { padding-top: 65px; gap: 8px; }
@@ -385,4 +523,5 @@ header h1 {
     }
     #actions { left: 18px; right: 18px; max-width: none; }
     #feedback { flex-basis: 100%; max-width: none; }
+    #close-completion { right: 14px; bottom: 14px; }
 }

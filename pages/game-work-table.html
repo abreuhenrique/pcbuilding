@@ -48,6 +48,16 @@
         </div>
     </main>
 
+    <section id="completion-screen" class="completion-screen" aria-hidden="true" hidden>
+        <div class="completion-dialog" role="dialog" aria-modal="true" aria-label="Montagem concluída">
+            <video id="completion-video" playsinline preload="metadata" disablepictureinpicture>
+                <source src="../assets/videos/montagem-concluida.mp4" type="video/mp4">
+                Seu navegador não suporta a reprodução deste vídeo.
+            </video>
+            <button id="close-completion" type="button">Voltar para a bancada</button>
+        </div>
+    </section>
+
     <script src="../scripts/game.js"></script>
 </body>
 </html>
