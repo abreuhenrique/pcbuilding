@@ -7,10 +7,25 @@ const pecas = [
         ddr: 'DDR4',
         entradasSata: 4,
         consumoWatts: 20,
+        assetKey: 'placa-mae-b550m',
 
-        imgInventory: '../assets/components/placa-mae.png',
-        imgInstalled: '../assets/components/placa-mae.png'
+        imgInventory: '../assets/components/placa_mãe_encaixe_pixelart B550M.png',
+        imgInstalled: '../assets/components/placa_mãe_encaixe_pixelart B550M.png'
 
+    },
+
+    {
+        id: 'b660m',
+        tipo: 'placaMae',
+        modelo: 'Placa Mãe B660M',
+        socket: 'LGA1700',
+        ddr: 'DDR4',
+        entradasSata: 4,
+        consumoWatts: 25,
+        assetKey: 'placa-mae-b660m',
+
+        imgInventory: '../assets/components/Placa_mãe_encaixe_B660M.png',
+        imgInstalled: '../assets/components/Placa_mãe_encaixe_B660M.png'
     },
     
     {
@@ -31,9 +46,23 @@ const pecas = [
         ddr: 'DDR4',
         capacidadeGB: 8,
         consumoWatts: 5,
+        assetKey: 'memoria-ram-ddr3',
 
-        imgInventory: '../assets/components/ram.png',
-        imgInstalled: '../assets/components/ram.png'
+        imgInventory: '../assets/components/memória_ram_encaixe_pixelart DDR3.png',
+        imgInstalled: '../assets/components/memória_ram_encaixe_pixelart DDR3.png'
+    },
+
+    {
+        id: 'fury-ddr4-8gb',
+        tipo: 'ram',
+        modelo: 'Memória Fury DDR4 8GB',
+        ddr: 'DDR4',
+        capacidadeGB: 8,
+        consumoWatts: 5,
+        assetKey: 'memoria-ram-ddr4-fury',
+
+        imgInventory: '../assets/components/memória_ram_encaixe_DDR4_Fury.png',
+        imgInstalled: '../assets/components/memória_ram_encaixe_DDR4_Fury.png'
     },
 
     {
@@ -41,9 +70,21 @@ const pecas = [
         tipo: 'placaDeVideo',
         modelo: 'GTX 1660',
         consumoWatts: 120,
+        assetKey: 'placa-video-gtx1660',
 
-        imgInventory: '../assets/components/placa-de-video.png',
-        imgInstalled: '../assets/components/placa-de-video.png'
+        imgInventory: '../assets/components/Placa_vídeo_encaixe_pixelart GTX 1660.png',
+        imgInstalled: '../assets/components/Placa_vídeo_encaixe_pixelart GTX 1660.png'
+    },
+
+    {
+        id: 'rx580',
+        tipo: 'placaDeVideo',
+        modelo: 'Radeon RX 580',
+        consumoWatts: 185,
+        assetKey: 'placa-video-rx580',
+
+        imgInventory: '../assets/components/placa_vídeo_encaixe_iRX580.png',
+        imgInstalled: '../assets/components/placa_vídeo_encaixe_iRX580.png'
     },
 
     {
@@ -53,9 +94,10 @@ const pecas = [
         capacidadeGB: 480,
         consumoWatts: 5,
         sata: true,
+        assetKey: 'ssd-a400',
         
-        imgInventory: '../assets/components/ssd.png',
-        imgInstalled: '../assets/components/ssd.png'
+        imgInventory: '../assets/components/SSD_encaixe_pixelart A400.png',
+        imgInstalled: '../assets/components/SSD_encaixe_pixelart A400.png'
     },
 
     {
@@ -63,9 +105,10 @@ const pecas = [
         tipo: 'fonte',
         modelo: 'Corsair 550W',
         potenciaWatts: 550,
+        assetKey: 'fonte-550w',
 
-        imgInventory: '../assets/components/fonte.png',
-        imgInstalled: '../assets/components/fonte.png'
+        imgInventory: '../assets/components/fonte_encaixe_pixelart 550W.png',
+        imgInstalled: '../assets/components/fonte_encaixe_pixelart 550W.png'
     },
 
     {
@@ -76,9 +119,10 @@ const pecas = [
         ddr: 'DDR4',
         entradasSata: 6,
         consumoWatts: 25,
+        assetKey: 'placa-mae-b550m',
 
-        imgInventory: '../assets/components/placa-mae.png',
-        imgInstalled: '../assets/components/placa-mae.png'
+        imgInventory: '../assets/components/placa_mãe_encaixe_pixelart B550M.png',
+        imgInstalled: '../assets/components/placa_mãe_encaixe_pixelart B550M.png'
     },
 
     {
@@ -88,9 +132,10 @@ const pecas = [
         capacidadeGB: 1000,
         consumoWatts: 5,
         sata: true,
+        assetKey: 'hd-1tb',
 
-        imgInventory: '../assets/components/hd.png',
-        imgInstalled: '../assets/components/hd.png'
+        imgInventory: '../assets/components/HD_encaixe_pixelart 1TB.png',
+        imgInstalled: '../assets/components/HD_encaixe_pixelart 1TB.png'
     }
 
 ]
