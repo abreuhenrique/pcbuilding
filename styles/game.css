@@ -171,12 +171,12 @@ header h1 {
     --crop-x: 472; --crop-y: 102; --crop-w: 784; --crop-h: 732;
 }
 [data-asset='memoria-ram-ddr3'] {
-    --source-w: 2760; --source-h: 1504;
-    --crop-x: 1279; --crop-y: 60; --crop-w: 254; --crop-h: 1370;
+    --source-w: 112; --source-h: 1380;
+    --crop-x: 0; --crop-y: 0; --crop-w: 112; --crop-h: 1380;
 }
 [data-asset='memoria-ram-ddr4-fury'] {
-    --source-w: 1679; --source-h: 937;
-    --crop-x: 764; --crop-y: 32; --crop-w: 161; --crop-h: 866;
+    --source-w: 112; --source-h: 1380;
+    --crop-x: 0; --crop-y: 0; --crop-w: 112; --crop-h: 1380;
 }
 [data-asset='placa-video-gtx1660'] {
     --source-w: 2816; --source-h: 1536;
@@ -266,10 +266,32 @@ header h1 {
 
 .ram-zone {
     z-index: 2;
-    top: 12%;
-    left: 79%;
-    width: 10%;
-    aspect-ratio: 159 / 843;
+    top: 10%;
+    width: 4.9%;
+    aspect-ratio: 112 / 1380;
+}
+
+/* Each memory module has its own connector. Positions are relative to the
+   motherboard crop, so they scale with the case at every viewport size. */
+.ram-slot-1 { left: 76%; }
+.ram-slot-2 { left: 81%; }
+.ram-slot-3 { left: 86%; }
+.ram-slot-4 { left: 91%; }
+
+.ram-zone > .installed-item > .component-art {
+    width: 100%;
+    height: 100%;
+    aspect-ratio: auto;
+}
+
+/* The connector artwork already identifies the slot; text inside these narrow
+   zones would overlap the neighboring connectors. The aria-labels remain for
+   assistive technology and drag feedback still highlights the active slot. */
+.ram-zone > span { display: none; }
+
+.ram-zone.is-disabled {
+    visibility: hidden;
+    pointer-events: none;
 }
 
 .video-card-zone {

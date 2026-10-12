@@ -5,6 +5,7 @@ const pecas = [
         modelo: 'Placa Mãe B550M',
         socket: 'AM4',
         ddr: 'DDR4',
+        ramSlots: 4,
         entradasSata: 4,
         consumoWatts: 20,
         assetKey: 'placa-mae-b550m',
@@ -20,12 +21,28 @@ const pecas = [
         modelo: 'Placa Mãe B660M',
         socket: 'LGA1700',
         ddr: 'DDR4',
+        ramSlots: 4,
         entradasSata: 4,
         consumoWatts: 25,
         assetKey: 'placa-mae-b660m',
 
         imgInventory: '../assets/components/Placa_mãe_encaixe_B660M.png',
         imgInstalled: '../assets/components/Placa_mãe_encaixe_B660M.png'
+    },
+
+        {
+        id: 'z490',
+        tipo: 'placaMae',
+        modelo: 'Placa Mãe Z490',
+        socket: 'LGA1200',
+        ddr: 'DDR4',
+        ramSlots: 4,
+        entradasSata: 6,
+        consumoWatts: 25,
+        assetKey: 'placa-mae-b550m',
+
+        imgInventory: '../assets/components/placa_mãe_encaixe_pixelart B550M.png',
+        imgInstalled: '../assets/components/placa_mãe_encaixe_pixelart B550M.png'
     },
     
     {
@@ -61,8 +78,8 @@ const pecas = [
         consumoWatts: 5,
         assetKey: 'memoria-ram-ddr3',
 
-        imgInventory: '../assets/components/memória_ram_encaixe_pixelart DDR3.png',
-        imgInstalled: '../assets/components/memória_ram_encaixe_pixelart DDR3.png'
+        imgInventory: '../assets/components/memória_ram_slot_DDR3.png',
+        imgInstalled: '../assets/components/memória_ram_slot_DDR3.png'
     },
 
     {
@@ -74,8 +91,8 @@ const pecas = [
         consumoWatts: 5,
         assetKey: 'memoria-ram-ddr4-fury',
 
-        imgInventory: '../assets/components/memória_ram_encaixe_DDR4_Fury.png',
-        imgInstalled: '../assets/components/memória_ram_encaixe_DDR4_Fury.png'
+        imgInventory: '../assets/components/memória_ram_slot_DDR4_Fury.png',
+        imgInstalled: '../assets/components/memória_ram_slot_DDR4_Fury.png'
     },
 
     {
@@ -125,20 +142,6 @@ const pecas = [
     },
 
     {
-        id: 'z490',
-        tipo: 'placaMae',
-        modelo: 'Z490',
-        socket: 'LGA1200',
-        ddr: 'DDR4',
-        entradasSata: 6,
-        consumoWatts: 25,
-        assetKey: 'placa-mae-b550m',
-
-        imgInventory: '../assets/components/placa_mãe_encaixe_pixelart B550M.png',
-        imgInstalled: '../assets/components/placa_mãe_encaixe_pixelart B550M.png'
-    },
-
-    {
         id: 'hd-1tb',
         tipo: 'armazenamento',
         modelo: 'HD1TB',
@@ -180,6 +183,7 @@ function getPieceDetails(peca) {
             return [
                 `Socket: ${peca.socket}`,
                 `Memória: ${peca.ddr}`,
+                `Slots de RAM: ${peca.ramSlots}`,
                 `Portas SATA: ${peca.entradasSata}`,
                 `Consumo: ${peca.consumoWatts} W`
             ];
@@ -248,7 +252,10 @@ function renderInventory() {
                 preview.offsetHeight / 2
             );
             document.querySelectorAll('.drop-zone').forEach(zone => {
-                zone.classList.toggle('is-available', zone.dataset.accept === peca.tipo);
+                zone.classList.toggle(
+                    'is-available',
+                    zone.dataset.accept === peca.tipo && !zone.classList.contains('is-disabled')
+                );
             });
         });
         element.addEventListener('dragend', () => {
@@ -301,7 +308,10 @@ function configureDropZones() {
             const id = event.dataTransfer.getData("text/plain");
             const peca = buscarPecaPorId(id);
             const tipoAceito = dropZone.dataset.accept;
-            if (peca && peca.tipo === tipoAceito) {
+            const slotOcupado = dropZone.classList.contains('ram-zone') && dropZone.querySelector('.installed-item');
+            if (slotOcupado) {
+                showFeedback('Este slot de memória já está ocupado.', 'error');
+            } else if (peca && peca.tipo === tipoAceito && !dropZone.classList.contains('is-disabled')) {
                 const sucesso = instalarPeca(peca);
                 if (sucesso) {
                     const element = document.createElement('div');
@@ -310,11 +320,17 @@ function configureDropZones() {
                     element.dataset.id = peca.id;
                     element.appendChild(createComponentArt(peca, true));
                     dropZone.appendChild(element);
+                    if (peca.tipo === 'placaMae') {
+                        document.querySelector('.motherboard-zone').dataset.board = peca.id;
+                        updateRamSlots();
+                    }
                     showFeedback(`Peça ${peca.modelo} instalada com sucesso!`, 'success');
                 } else {
                     showFeedback(`Falha ao instalar a peça ${peca.modelo}.`, 'error');
                 }
-            } else if(peca &&peca.tipo !== tipoAceito) {
+            } else if (peca && peca.tipo === tipoAceito && dropZone.classList.contains('is-disabled')) {
+                showFeedback('Não há slots de RAM disponíveis nesta placa-mãe.', 'error');
+            } else if (peca && peca.tipo !== tipoAceito) {
                 showFeedback(`Peça ${peca.modelo} não pode ser instalada nesta zona.`, 'error');
             }
         });
@@ -325,7 +341,9 @@ function calcConsumption() {
     let consumption = 0;
     if (computador.placaMae) consumption += computador.placaMae.consumoWatts;
     if (computador.processador) consumption += computador.processador.consumoWatts;
-    if (computador.ram) consumption += computador.ram.consumoWatts;
+    computador.ram.forEach(memoria => {
+        consumption += memoria.consumoWatts;
+    });
     if (computador.placaDeVideo) consumption += computador.placaDeVideo.consumoWatts;
     computador.armazenamentos.forEach(armazenamento => {
         consumption += armazenamento.consumoWatts;
@@ -334,7 +352,7 @@ function calcConsumption() {
 }
 
 function checkAssembly() {
-    return computador.placaMae && computador.processador && computador.ram && computador.placaDeVideo && computador.fonte && computador.armazenamentos.length > 0;
+    return computador.placaMae && computador.processador && computador.ram.length > 0 && computador.placaDeVideo && computador.fonte && computador.armazenamentos.length > 0;
 }
 
 function turnOnComputer() {
@@ -403,11 +421,14 @@ function resetComputer() {
     }
     computador.placaMae = null;
     computador.processador = null;
-    computador.ram = null;
+    computador.ram = [];
     computador.placaDeVideo = null;
     computador.armazenamentos = [];
     computador.fonte = null;
     computador.satasUsadas = 0;
+    const motherboardZone = document.querySelector('.motherboard-zone');
+    delete motherboardZone.dataset.board;
+    updateRamSlots();
 
     const installedItems = document.querySelectorAll('.installed-item');
     installedItems.forEach(item => {
@@ -425,7 +446,7 @@ resetButton.addEventListener('click', () => {
 const computador = {
     placaMae: null,
     processador: null,
-    ram: null,
+    ram: [],
     placaDeVideo: null,
     armazenamentos: [],
     fonte: null,
@@ -435,6 +456,22 @@ const computador = {
 
 function buscarPecaPorId(id) {
     return pecas.find(peca => peca.id === id);
+}
+
+function updateRamSlots() {
+    const motherboardZone = document.querySelector('.motherboard-zone');
+    const ramSlots = document.querySelectorAll('.ram-zone');
+    const limite = computador.placaMae?.ramSlots ?? 0;
+
+    ramSlots.forEach((slot, index) => {
+        const disabled = index >= limite;
+        slot.classList.toggle('is-disabled', disabled);
+        slot.setAttribute('aria-hidden', disabled ? 'true' : 'false');
+    });
+
+    if (!computador.placaMae) {
+        motherboardZone.removeAttribute('data-board');
+    }
 }
 
 function instalarPeca(peca) {
@@ -451,6 +488,7 @@ function instalarPeca(peca) {
             }
             console.log('Placa-mãe instalada com sucesso.');
             computador.placaMae = peca;
+            updateRamSlots();
             return true;
 
         case 'processador':
@@ -468,12 +506,20 @@ function instalarPeca(peca) {
             }
 
         case 'ram':
-            if(computador.ram !== null) {
-                console.log('Já existe uma RAM instalada.');
+            if (!computador.placaMae) {
+                console.log('Instale uma placa-mãe antes da memória RAM.');
+                return false;
+            }
+            if (computador.placaMae.ddr !== peca.ddr) {
+                console.log('A RAM não é compatível com a placa-mãe.');
+                return false;
+            }
+            if (computador.ram.length >= computador.placaMae.ramSlots) {
+                console.log('Não há slots de RAM disponíveis na placa-mãe.');
                 return false;
             }
             if (computador.placaMae && computador.placaMae.ddr === peca.ddr) {
-                computador.ram = peca;
+                computador.ram.push(peca);
                 console.log('RAM instalada com sucesso.');
                 return true;
             } else {
@@ -518,5 +564,6 @@ function instalarPeca(peca) {
     }
 }
 
+updateRamSlots();
 renderInventory();
 configureDropZones();
