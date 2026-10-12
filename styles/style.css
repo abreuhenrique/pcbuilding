@@ -39,6 +39,7 @@ body {
 .index-header {
     display: flex;
     justify-content: space-between;
+    align-items: center;
     background-color: var(--header-bgcolor);
     padding: var(--spacing-md);
     text-transform: capitalize;
@@ -71,6 +72,10 @@ body {
         }
 
         .pages {
+            display: flex;
+            align-items: center;
+            gap: var(--spacing-sm);
+
             a {
                 text-decoration: none;
                 color: var(--header-textcolor);
@@ -116,6 +121,11 @@ body {
             align-items: center;
             margin-bottom: 20px;
             gap: var(--spacing-sm);
+
+            video {
+                width: min(560px, 100%);
+                height: auto;
+            }
         }
 
         .play-now-btn {
@@ -244,6 +254,51 @@ body {
                         margin-left: 25px;
                     }
                 }
+            }
+        }
+    }
+}
+
+/* Aqui vai deixar a tela responsiva pra mobile, eu espero! */
+@media (max-width: 600px) {
+    .index-header {
+        padding: var(--spacing-sm);
+
+        .left-side {
+            width: 100%;
+            flex-wrap: wrap;
+            justify-content: center;
+
+            .vertical-divider {
+                width: 100%;
+                height: 0;
+                border-left: 0;
+                border-bottom: 2px solid var(--header-divider-color);
+                margin: 0;
+            }
+
+            .pages {
+                width: 100%;
+                justify-content: center;
+                flex-wrap: wrap;
+            }
+        }
+    }
+
+    .index-main {
+        .content {
+            margin: 20px var(--spacing-md);
+        }
+    }
+
+    footer {
+        .footer-grid {
+            grid-template-columns: 1fr;
+
+            .col-about-us,
+            .col-contribute,
+            .col-contacts {
+                padding: 0;
             }
         }
     }
