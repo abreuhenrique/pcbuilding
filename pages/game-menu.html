@@ -12,7 +12,7 @@
             <h1>PC BUILDING</h1>
             <nav class="menu-actions">
 
-                <a href="game-work-table.html" class="menu-button">
+                <a href="game-work-table.html" class="menu-button" id="start-game">
                     JOGAR
                 </a>
 
@@ -23,6 +23,16 @@
     
     </section>
 </main>
+
+<section id="mobile-game-shell" class="mobile-game-shell" hidden aria-label="Jogo de montagem">
+    <iframe id="mobile-game-frame" title="Mesa de montagem" allow="fullscreen"></iframe>
+    <div class="rotate-device-notice" role="status">
+        <span aria-hidden="true">↻</span>
+        <p>Vire o celular para a horizontal para jogar.</p>
+    </div>
+    <button id="exit-mobile-game" class="exit-mobile-game" type="button" aria-label="Sair do jogo e da tela cheia" title="Sair do jogo">⤢</button>
+</section>
     
+<script src="../scripts/game-menu.js"></script>
 </body>
 </html>

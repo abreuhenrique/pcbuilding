@@ -110,8 +110,82 @@ body::after {
     transform: translateY(0);
 }
 
+.mobile-game-shell {
+    position: fixed;
+    inset: 0;
+    z-index: 10;
+    background: #17131b;
+}
+
+.mobile-game-shell[hidden] {
+    display: none;
+}
+
+#mobile-game-frame {
+    display: block;
+    width: 100%;
+    height: 100%;
+    border: 0;
+}
+
+.rotate-device-notice {
+    display: none;
+}
+
+.exit-mobile-game {
+    position: absolute;
+    top: 14px;
+    right: 14px;
+    z-index: 3;
+    width: 42px;
+    height: 42px;
+    border: 1px solid rgba(244, 234, 208, 0.58);
+    color: var(--ink);
+    font: 26px/1 monospace;
+    background: rgba(24, 22, 28, 0.88);
+    cursor: pointer;
+}
+
+.exit-mobile-game:hover,
+.exit-mobile-game:focus-visible {
+    border-color: var(--accent);
+    outline: none;
+}
+
 @media (max-width: 520px) {
     .menu-container {
         padding: 34px 26px 36px;
+    }
+}
+
+/* overlay do aviso de orientação de telakk */
+@media (max-width: 760px) and (orientation: portrait) {
+    .mobile-game-shell:not([hidden]) .rotate-device-notice {
+        position: absolute;
+        inset: 0;
+        z-index: 2;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+        gap: 14px;
+        padding: 24px;
+        color: var(--ink);
+        text-align: center;
+        background: rgba(9, 8, 11, 0.94);
+    }
+
+    .rotate-device-notice span {
+        color: var(--accent);
+        font-size: 56px;
+        line-height: 1;
+        transform: rotate(90deg);
+    }
+
+    .rotate-device-notice p {
+        max-width: 280px;
+        margin: 0;
+        font-size: 16px;
+        line-height: 1.45;
     }
 }
