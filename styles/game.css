@@ -535,6 +535,16 @@ header h1 {
         padding: 18px;
         background: var(--panel);
     }
+    .inventory-item {
+        overflow: hidden;
+    }
+    .inventory-tooltip {
+        inset: 4px;
+        max-width: calc(100% - 8px);
+        max-height: calc(100% - 8px);
+        overflow-y: auto;
+        overflow-wrap: anywhere;
+    }
     #actions { left: 18px; right: 18px; max-width: none; }
     #feedback { flex-basis: 100%; max-width: none; }
     #close-completion { right: 14px; bottom: 14px; }
