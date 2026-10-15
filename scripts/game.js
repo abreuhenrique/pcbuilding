@@ -1,4 +1,20 @@
 const pecas = [
+        {
+        id: 'h61',
+        tipo: 'placaMae',
+        modelo: 'Placa Mãe H61',
+        socket: '1155',
+        ddr: 'DDR3',
+        ramSlots: 4,
+        entradasSata: 3,
+        consumoWatts: 5,
+        assetKey: 'placa-mae-h61',
+
+        imgInventory: '../assets/components/mb-h61-icon.png',
+        imgInstalled: '../assets/components/mb-h61-encaixe.png'
+
+    },
+
     {
         id: 'b550m',
         tipo: 'placaMae',
@@ -10,7 +26,7 @@ const pecas = [
         consumoWatts: 20,
         assetKey: 'placa-mae-b550m',
 
-        imgInventory: '../assets/components/mb-b550m-encaixe.png',
+        imgInventory: '../assets/components/mb-b550m-icon.png',
         imgInstalled: '../assets/components/mb-b550m-encaixe.png'
 
     },
@@ -26,7 +42,7 @@ const pecas = [
         consumoWatts: 25,
         assetKey: 'placa-mae-b660m',
 
-        imgInventory: '../assets/components/mb-b660m-encaixe.png',
+        imgInventory: '../assets/components/mb-b760-icon.png',
         imgInstalled: '../assets/components/mb-b660m-encaixe.png'
     },
 
@@ -41,8 +57,20 @@ const pecas = [
         consumoWatts: 25,
         assetKey: 'placa-mae-b550m',
 
-        imgInventory: '../assets/components/mb-z490-encaixe.png',
+        imgInventory: '../assets/components/mb-z490-icon.png',
         imgInstalled: '../assets/components/mb-z490-encaixe.png'
+    },
+
+        {
+        id: 'i5-457',
+        tipo: 'processador',
+        modelo: 'Intel Core i5 457',
+        socket: '1155',
+        consumoWatts: 85,
+        assetKey: 'processador-i5457',
+
+        imgInventory: '../assets/components/cpu-i5457-icon.png',
+        imgInstalled: '../assets/components/cpu-i5-457-encaixe.png'
     },
     
     {
@@ -53,7 +81,19 @@ const pecas = [
         consumoWatts: 65,
         assetKey: 'processador-ryzen-5600',
 
-        imgInventory: '../assets/components/cpu-r5-5600-encaixe.png',
+        imgInventory: '../assets/components/cpu-r5-5600-icon.png',
+        imgInstalled: '../assets/components/cpu-r5-5600-encaixe.png'
+    },
+
+        {
+        id: 'ryzen7-5700',
+        tipo: 'processador',
+        modelo: 'Ryzen 7 5700',
+        socket: 'AM4',
+        consumoWatts: 65,
+        assetKey: 'processador-ryzen-7-5700',
+
+        imgInventory: '../assets/components/cpu-r7-icon.png',
         imgInstalled: '../assets/components/cpu-r5-5600-encaixe.png'
     },
 
@@ -65,20 +105,20 @@ const pecas = [
         consumoWatts: 65,
         assetKey: 'processador-intel-i5',
 
-        imgInventory: '../assets/components/cpu-i5-12400-encaixe.png',
+        imgInventory: '../assets/components/cpu-i5-12400-icon.png',
         imgInstalled: '../assets/components/cpu-i5-12400-encaixe.png'
     },
 
     {
         id: 'corsair-8GB',
         tipo: 'ram',
-        modelo: 'Memória Corsair 8GB',
+        modelo: 'Memória Corsair DDR4 8GB',
         ddr: 'DDR4',
         capacidadeGB: 8,
         consumoWatts: 5,
-        assetKey: 'memoria-ram-ddr3',
+        assetKey: 'memoria-ram-ddr4',
 
-        imgInventory: '../assets/components/ram-ddr4-encaixe.png',
+        imgInventory: '../assets/components/ram-ddr4-icon.png',
         imgInstalled: '../assets/components/ram-ddr4-encaixe.png'
     },
 
@@ -91,8 +131,21 @@ const pecas = [
         consumoWatts: 5,
         assetKey: 'memoria-ram-ddr4-fury',
 
-        imgInventory: '../assets/components/ram-ddr5-encaixe.png',
+        imgInventory: '../assets/components/ram-ddr4-8gb-icon.png',
         imgInstalled: '../assets/components/ram-ddr5-encaixe.png'
+    },
+
+        {
+        id: 'ram-ddr3-4gb',
+        tipo: 'ram',
+        modelo: 'Memória DDR3 4GB',
+        ddr: 'DDR3',
+        capacidadeGB: 4,
+        consumoWatts: 2,
+        assetKey: 'memoria-ram-ddr3',
+
+        imgInventory: '../assets/components/ram-ddr3-icon.png',
+        imgInstalled: '../assets/components/ram-ddr3-encaixe.png'
     },
 
     {
@@ -102,7 +155,7 @@ const pecas = [
         consumoWatts: 120,
         assetKey: 'placa-video-gtx1660',
 
-        imgInventory: '../assets/components/gpu-gtx-1660-encaixe.png',
+        imgInventory: '../assets/components/gpu-gtx1660-icon.png',
         imgInstalled: '../assets/components/gpu-gtx-1660-encaixe.png'
     },
 
@@ -113,21 +166,8 @@ const pecas = [
         consumoWatts: 185,
         assetKey: 'placa-video-rx580',
 
-        imgInventory: '../assets/components/gpu-rx580-encaixe.png',
+        imgInventory: '../assets/components/gpu-rx580-icon.png',
         imgInstalled: '../assets/components/gpu-rx580-encaixe.png'
-    },
-
-    {
-        id: 'kingston-a400',
-        tipo: 'armazenamento',
-        modelo: 'kingston A400',
-        capacidadeGB: 480,
-        consumoWatts: 5,
-        sata: true,
-        assetKey: 'ssd-a400',
-        
-        imgInventory: '../assets/components/ssd-a400-encaixe.png',
-        imgInstalled: '../assets/components/ssd-a400-encaixe.png'
     },
 
     {
@@ -137,20 +177,45 @@ const pecas = [
         potenciaWatts: 550,
         assetKey: 'fonte-550w',
 
-        imgInventory: '../assets/components/fonte-650w-encaixe.png',
+        imgInventory: '../assets/components/fonte-650w-icon.png',
         imgInstalled: '../assets/components/fonte-650w-encaixe.png'
+    },
+
+
+    {
+        id: 'fonte-200w',
+        tipo: 'fonte',
+        modelo: 'Fonte 200w',
+        potenciaWatts: 200,
+        assetKey: 'fonte-200w',
+
+        imgInventory: '../assets/components/fonte-200w-icon.png',
+        imgInstalled: '../assets/components/fonte-200w-encaixe.png'
+    },
+
+        {
+        id: 'ssd-480gb',
+        tipo: 'armazenamento',
+        modelo: 'SSD 480GB',
+        capacidadeGB: 480,
+        consumoWatts: 5,
+        sata: true,
+        assetKey: 'ssd-480gb',
+
+        imgInventory: '../assets/components/ssd-480-icon.png',
+        imgInstalled: '../assets/components/ssd-a400-encaixe.png'
     },
 
     {
         id: 'hd-1tb',
         tipo: 'armazenamento',
-        modelo: 'HD1TB',
-        capacidadeGB: 1000,
+        modelo: 'HD2TB',
+        capacidadeGB: 2000,
         consumoWatts: 5,
         sata: true,
         assetKey: 'hd-1tb',
 
-        imgInventory: '../assets/components/hd-1tb-encaixe.png',
+        imgInventory: '../assets/components/hd-2tb-icon.png',
         imgInstalled: '../assets/components/hd-1tb-encaixe.png'
     }
 
