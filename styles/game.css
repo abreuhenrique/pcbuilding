@@ -100,109 +100,32 @@ header h1 {
     position: relative;
     display: block;
     width: 100%;
-    aspect-ratio: var(--crop-w) / var(--crop-h);
-    overflow: hidden;
     pointer-events: none;
 }
 
 .component-art > img {
-    position: absolute;
     display: block;
-    max-width: none;
-    width: calc(100% * var(--source-w) / var(--crop-w));
-    height: calc(100% * var(--source-h) / var(--crop-h));
-    left: calc(-100% * var(--crop-x) / var(--crop-w));
-    top: calc(-100% * var(--crop-y) / var(--crop-h));
+    width: 100%;
+    height: auto;
     user-select: none;
     pointer-events: none;
-}
-
-[data-asset='gabinete'] {
-    --source-w: 1699; --source-h: 926;
-    --crop-x: 460; --crop-y: 94; --crop-w: 773; --crop-h: 774;
-}
-[data-asset='placa-mae'] {
-    --source-w: 1303; --source-h: 1207;
-    --crop-x: 151; --crop-y: 9; --crop-w: 986; --crop-h: 1147;
-}
-[data-asset='processador'] {
-    --source-w: 1361; --source-h: 1156;
-    --crop-x: 157; --crop-y: 95; --crop-w: 1047; --crop-h: 961;
-}
-[data-asset='ram'] {
-    --source-w: 1700; --source-h: 925;
-    --crop-x: 774; --crop-y: 38; --crop-w: 159; --crop-h: 843;
-}
-[data-asset='placa-de-video'] {
-    --source-w: 2089; --source-h: 753;
-    --crop-x: 49; --crop-y: 23; --crop-w: 2021; --crop-h: 722;
-}
-[data-asset='ssd'] {
-    --source-w: 1699; --source-h: 926;
-    --crop-x: 240; --crop-y: 415; --crop-w: 1219; --crop-h: 102;
-}
-[data-asset='hd'] {
-    --source-w: 1699; --source-h: 926;
-    --crop-x: 392; --crop-y: 409; --crop-w: 916; --crop-h: 174;
-}
-[data-asset='fonte'] {
-    --source-w: 1699; --source-h: 926;
-    --crop-x: 489; --crop-y: 251; --crop-w: 734; --crop-h: 474;
-}
-
-[data-asset='placa-mae-b550m'] {
-    --source-w: 2760; --source-h: 1504;
-    --crop-x: 790; --crop-y: 8; --crop-w: 1266; --crop-h: 1483;
-}
-[data-asset='placa-mae-b660m'] {
-    --source-w: 1678; --source-h: 937;
-    --crop-x: 289; --crop-y: 10; --crop-w: 1132; --crop-h: 927;
-}
-
-.motherboard-zone > .installed-item > [data-asset='placa-mae-b660m'] {
-    aspect-ratio: 1266 / 1483;
-}
-[data-asset='processador-ryzen-5600'] {
-    --source-w: 2816; --source-h: 1536;
-    --crop-x: 759; --crop-y: 185; --crop-w: 1300; --crop-h: 1185;
-}
-[data-asset='processador-intel-i5'] {
-    --source-w: 1698; --source-h: 926;
-    --crop-x: 472; --crop-y: 102; --crop-w: 784; --crop-h: 732;
-}
-[data-asset='memoria-ram-ddr3'] {
-    --source-w: 2760; --source-h: 1504;
-    --crop-x: 1279; --crop-y: 60; --crop-w: 254; --crop-h: 1370;
-}
-[data-asset='memoria-ram-ddr4-fury'] {
-    --source-w: 1679; --source-h: 937;
-    --crop-x: 764; --crop-y: 32; --crop-w: 161; --crop-h: 866;
-}
-[data-asset='placa-video-gtx1660'] {
-    --source-w: 2816; --source-h: 1536;
-    --crop-x: 297; --crop-y: 341; --crop-w: 2241; --crop-h: 922;
-}
-[data-asset='placa-video-rx580'] {
-    --source-w: 1678; --source-h: 937;
-    --crop-x: 59; --crop-y: 156; --crop-w: 1566; --crop-h: 696;
-}
-[data-asset='ssd-a400'] {
-    --source-w: 2816; --source-h: 1536;
-    --crop-x: 396; --crop-y: 689; --crop-w: 2022; --crop-h: 169;
-}
-[data-asset='fonte-550w'] {
-    --source-w: 2816; --source-h: 1536;
-    --crop-x: 819; --crop-y: 419; --crop-w: 1202; --crop-h: 777;
-}
-[data-asset='hd-1tb'] {
-    --source-w: 2816; --source-h: 1536;
-    --crop-x: 649; --crop-y: 677; --crop-w: 1519; --crop-h: 287;
 }
 
 .case-art {
     position: absolute;
     inset: 0;
     z-index: 0;
+    aspect-ratio: 773 / 774;
+    overflow: hidden;
+}
+
+.case-art > img {
+    position: absolute;
+    max-width: none;
+    width: calc(100% * 1699 / 773);
+    height: calc(100% * 926 / 774);
+    left: calc(-100% * 460 / 773);
+    top: calc(-100% * 94 / 774);
 }
 
 .drop-zone {
@@ -245,11 +168,14 @@ header h1 {
 }
 
 .motherboard-zone {
+    /* The cabinet artwork uses a 773 × 774 reference canvas.  The board PNG
+       itself is 500 × 500, so its drop area retains that native size while
+       scaling with the cabinet at smaller viewports. */
     z-index: 1;
-    top: 7%;
-    left: 12%;
-    width: 55%;
-    aspect-ratio: 986 / 1147;
+    top: calc(100% * 54 / 774);
+    left: calc(100% * 93 / 773);
+    width: calc(100% * 500 / 773);
+    aspect-ratio: 1;
 }
 
 /* Child slots follow the motherboard, even when the entire case is resized. */
@@ -257,27 +183,88 @@ header h1 {
 .motherboard-zone > .installed-item { z-index: 0; }
 
 .cpu-zone {
+    /* 75 × 75 on the motherboard's 500 × 500 native canvas. */
     z-index: 2;
-    top: 26%;
-    left: 48%;
-    width: 23%;
-    aspect-ratio: 1047 / 961;
+    top: 24%;
+    left: 45%;
+    width: 28%;
+    aspect-ratio: 1;
 }
 
 .ram-zone {
-    z-index: 2;
-    top: 12%;
-    left: 79%;
-    width: 10%;
-    aspect-ratio: 159 / 843;
+    z-index: 4;
+    top: 13%;
+    width: 2.6%;
+    height: 47%;
+    overflow: hidden;
+}
+
+/* While a DIMM is being dragged, keep its four targets above the storage
+   area so the fourth slot can receive the drop as well. */
+.motherboard-zone:has(.ram-zone.is-available) { z-index: 3; }
+
+/* Each zone is the size and position of its corresponding DIMM slot in the
+   500 × 500 motherboard artwork. */
+.ram-slot-1 { left: 77.2%; }
+.ram-slot-2 { left: 81.4%; }
+.ram-slot-3 { left: 85.6%; }
+.ram-slot-4 { left: 89.8%; }
+
+.ram-zone > .installed-item > .component-art {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    aspect-ratio: auto;
+    overflow: hidden;
+}
+
+/* The memory PNGs include transparent canvas around the module. Crop that
+   canvas only when installed so the visible module fills its DIMM slot. */
+.ram-zone > .installed-item > .component-art > img {
+    position: absolute;
+    max-width: none;
+    object-fit: fill;
+}
+
+.ram-zone > .installed-item > [data-asset='memoria-ram-ddr3'] > img {
+    width: calc(100% * 187 / 66);
+    height: calc(100% * 1334 / 1205);
+    left: calc(-100% * 61 / 66);
+    top: calc(-100% * 64 / 1205);
+}
+
+.ram-zone > .installed-item > [data-asset='memoria-ram-ddr4-fury'] > img {
+    width: calc(100% * 187 / 55);
+    height: calc(100% * 1334 / 1198);
+    left: calc(-100% * 66 / 55);
+    top: calc(-100% * 67 / 1198);
+}
+
+/* The connector artwork already identifies the slot; text inside these narrow
+   zones would overlap the neighboring connectors. The aria-labels remain for
+   assistive technology and drag feedback still highlights the active slot. */
+.ram-zone > span { display: none; }
+
+.ram-zone.is-disabled {
+    visibility: hidden;
+    pointer-events: none;
 }
 
 .video-card-zone {
+    /* Anchored to the primary PCIe x16 connector in the motherboard artwork.
+       Its dimensions keep both GPU illustrations at a readable, proportional
+       size while their gold edge meets the slot. */
     z-index: 3;
-    top: 53%;
-    left: -9%;
-    width: 117%;
+    top: 64%;
+    left: -10%;
+    width: 100%;
     aspect-ratio: 2021 / 722;
+}
+
+/* Preserve the PCIe-aligned area above and make the installed GPU occupy its
+   full width and height instead of being reduced by `object-fit: contain`. */
+.video-card-zone > .installed-item > .component-art > img {
+    object-fit: fill;
 }
 
 .storage-zone {
@@ -295,9 +282,28 @@ header h1 {
 .power-supply-zone {
     z-index: 2;
     top: 76%;
-    left: 10%;
+    left: 6%;
     width: 26%;
     aspect-ratio: 734 / 474;
+}
+
+/* The power-supply asset has transparent padding around the unit. Crop that
+   padding when installed so the visible PSU fills the existing drop area. */
+.power-supply-zone > .installed-item > .component-art {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+
+.power-supply-zone > .installed-item > .component-art > img {
+    position: absolute;
+    max-width: none;
+    width: calc(100% * 2400 / 2116);
+    height: calc(100% * 1792 / 1194);
+    left: calc(-100% * 152 / 2116);
+    top: calc(-100% * 284 / 1194);
+    object-fit: fill;
 }
 
 .inventory-item {
@@ -376,8 +382,20 @@ header h1 {
 }
 
 .inventory-preview .component-art {
-    width: min(100%, calc(var(--preview-height) * var(--crop-w) / var(--crop-h)));
+    display: flex;
+    width: auto;
+    height: var(--preview-height);
+    max-width: 100%;
+    align-items: center;
+    justify-content: center;
     flex-shrink: 0;
+}
+
+.inventory-preview .component-art > img {
+    width: auto;
+    height: auto;
+    max-width: 100%;
+    max-height: 100%;
 }
 
 .inventory-name {
@@ -397,11 +415,24 @@ header h1 {
     pointer-events: none;
 }
 
+.installed-item > .component-art {
+    height: 100%;
+}
+
+.installed-item > .component-art > img {
+    height: 100%;
+    object-fit: contain;
+}
+
 .storage-zone > .installed-item {
     position: relative;
     inset: auto;
-    width: 100%;
+    width: 110%;
     flex: 0 0 auto;
+}
+
+.storage-zone > .installed-item > .component-art {
+    height: auto;
 }
 
 #actions {
@@ -493,6 +524,20 @@ header h1 {
     height: 100%;
     background: #09080b;
     object-fit: cover;
+}
+
+/* proporção 16/9 na tela vertical mobile da parte de ver o pc ligado */
+@media (max-width: 760px) and (orientation: portrait) {
+    #completion-video {
+        position: absolute;
+        top: 50%;
+        left: 0;
+        width: 100%;
+        height: auto;
+        aspect-ratio: 16 / 9;
+        transform: translateY(-50%);
+        object-fit: contain;
+    }
 }
 
 @media (max-height: 760px) and (min-width: 761px) {

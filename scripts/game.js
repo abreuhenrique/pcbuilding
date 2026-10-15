@@ -1,16 +1,33 @@
 const pecas = [
+        {
+        id: 'h61',
+        tipo: 'placaMae',
+        modelo: 'Placa Mãe H61',
+        socket: '1155',
+        ddr: 'DDR3',
+        ramSlots: 4,
+        entradasSata: 3,
+        consumoWatts: 5,
+        assetKey: 'placa-mae-h61',
+
+        imgInventory: '../assets/components/mb-h61-icon.png',
+        imgInstalled: '../assets/components/mb-h61-encaixe.png'
+
+    },
+
     {
         id: 'b550m',
         tipo: 'placaMae',
         modelo: 'Placa Mãe B550M',
         socket: 'AM4',
         ddr: 'DDR4',
+        ramSlots: 4,
         entradasSata: 4,
         consumoWatts: 20,
         assetKey: 'placa-mae-b550m',
 
-        imgInventory: '../assets/components/placa_mãe_encaixe_pixelart B550M.png',
-        imgInstalled: '../assets/components/placa_mãe_encaixe_pixelart B550M.png'
+        imgInventory: '../assets/components/mb-b550m-icon.png',
+        imgInstalled: '../assets/components/mb-b550m-encaixe.png'
 
     },
 
@@ -20,12 +37,40 @@ const pecas = [
         modelo: 'Placa Mãe B660M',
         socket: 'LGA1700',
         ddr: 'DDR4',
+        ramSlots: 4,
         entradasSata: 4,
         consumoWatts: 25,
         assetKey: 'placa-mae-b660m',
 
-        imgInventory: '../assets/components/Placa_mãe_encaixe_B660M.png',
-        imgInstalled: '../assets/components/Placa_mãe_encaixe_B660M.png'
+        imgInventory: '../assets/components/mb-b760-icon.png',
+        imgInstalled: '../assets/components/mb-b660m-encaixe.png'
+    },
+
+        {
+        id: 'z490',
+        tipo: 'placaMae',
+        modelo: 'Placa Mãe Z490',
+        socket: 'LGA1200',
+        ddr: 'DDR4',
+        ramSlots: 4,
+        entradasSata: 6,
+        consumoWatts: 25,
+        assetKey: 'placa-mae-b550m',
+
+        imgInventory: '../assets/components/mb-z490-icon.png',
+        imgInstalled: '../assets/components/mb-z490-encaixe.png'
+    },
+
+        {
+        id: 'i5-457',
+        tipo: 'processador',
+        modelo: 'Intel Core i5 457',
+        socket: '1155',
+        consumoWatts: 85,
+        assetKey: 'processador-i5457',
+
+        imgInventory: '../assets/components/cpu-i5457-icon.png',
+        imgInstalled: '../assets/components/cpu-i5-457-encaixe.png'
     },
     
     {
@@ -36,8 +81,20 @@ const pecas = [
         consumoWatts: 65,
         assetKey: 'processador-ryzen-5600',
 
-        imgInventory: '../assets/components/processador_encaixe_pixelart ryzen 5 5600.png',
-        imgInstalled: '../assets/components/processador_encaixe_pixelart ryzen 5 5600.png'
+        imgInventory: '../assets/components/cpu-r5-5600-icon.png',
+        imgInstalled: '../assets/components/cpu-r5-5600-encaixe.png'
+    },
+
+        {
+        id: 'ryzen7-5700',
+        tipo: 'processador',
+        modelo: 'Ryzen 7 5700',
+        socket: 'AM4',
+        consumoWatts: 65,
+        assetKey: 'processador-ryzen-7-5700',
+
+        imgInventory: '../assets/components/cpu-r7-icon.png',
+        imgInstalled: '../assets/components/cpu-r5-5600-encaixe.png'
     },
 
     {
@@ -48,21 +105,21 @@ const pecas = [
         consumoWatts: 65,
         assetKey: 'processador-intel-i5',
 
-        imgInventory: '../assets/components/Processador_encaixe_intel_i5.png',
-        imgInstalled: '../assets/components/Processador_encaixe_intel_i5.png'
+        imgInventory: '../assets/components/cpu-i5-12400-icon.png',
+        imgInstalled: '../assets/components/cpu-i5-12400-encaixe.png'
     },
 
     {
         id: 'corsair-8GB',
         tipo: 'ram',
-        modelo: 'Memória Corsair 8GB',
+        modelo: 'Memória Corsair DDR4 8GB',
         ddr: 'DDR4',
         capacidadeGB: 8,
         consumoWatts: 5,
-        assetKey: 'memoria-ram-ddr3',
+        assetKey: 'memoria-ram-ddr4',
 
-        imgInventory: '../assets/components/memória_ram_encaixe_pixelart DDR3.png',
-        imgInstalled: '../assets/components/memória_ram_encaixe_pixelart DDR3.png'
+        imgInventory: '../assets/components/ram-ddr4-icon.png',
+        imgInstalled: '../assets/components/ram-ddr4-encaixe.png'
     },
 
     {
@@ -74,8 +131,21 @@ const pecas = [
         consumoWatts: 5,
         assetKey: 'memoria-ram-ddr4-fury',
 
-        imgInventory: '../assets/components/memória_ram_encaixe_DDR4_Fury.png',
-        imgInstalled: '../assets/components/memória_ram_encaixe_DDR4_Fury.png'
+        imgInventory: '../assets/components/ram-ddr4-8gb-icon.png',
+        imgInstalled: '../assets/components/ram-ddr5-encaixe.png'
+    },
+
+        {
+        id: 'ram-ddr3-4gb',
+        tipo: 'ram',
+        modelo: 'Memória DDR3 4GB',
+        ddr: 'DDR3',
+        capacidadeGB: 4,
+        consumoWatts: 2,
+        assetKey: 'memoria-ram-ddr3',
+
+        imgInventory: '../assets/components/ram-ddr3-icon.png',
+        imgInstalled: '../assets/components/ram-ddr3-encaixe.png'
     },
 
     {
@@ -85,8 +155,8 @@ const pecas = [
         consumoWatts: 120,
         assetKey: 'placa-video-gtx1660',
 
-        imgInventory: '../assets/components/Placa_vídeo_encaixe_pixelart GTX 1660.png',
-        imgInstalled: '../assets/components/Placa_vídeo_encaixe_pixelart GTX 1660.png'
+        imgInventory: '../assets/components/gpu-gtx1660-icon.png',
+        imgInstalled: '../assets/components/gpu-gtx-1660-encaixe.png'
     },
 
     {
@@ -96,21 +166,8 @@ const pecas = [
         consumoWatts: 185,
         assetKey: 'placa-video-rx580',
 
-        imgInventory: '../assets/components/placa_vídeo_encaixe_iRX580.png',
-        imgInstalled: '../assets/components/placa_vídeo_encaixe_iRX580.png'
-    },
-
-    {
-        id: 'kingston-a400',
-        tipo: 'armazenamento',
-        modelo: 'kingston A400',
-        capacidadeGB: 480,
-        consumoWatts: 5,
-        sata: true,
-        assetKey: 'ssd-a400',
-        
-        imgInventory: '../assets/components/SSD_encaixe_pixelart A400.png',
-        imgInstalled: '../assets/components/SSD_encaixe_pixelart A400.png'
+        imgInventory: '../assets/components/gpu-rx580-icon.png',
+        imgInstalled: '../assets/components/gpu-rx580-encaixe.png'
     },
 
     {
@@ -120,35 +177,46 @@ const pecas = [
         potenciaWatts: 550,
         assetKey: 'fonte-550w',
 
-        imgInventory: '../assets/components/fonte_encaixe_pixelart 550W.png',
-        imgInstalled: '../assets/components/fonte_encaixe_pixelart 550W.png'
+        imgInventory: '../assets/components/fonte-650w-icon.png',
+        imgInstalled: '../assets/components/fonte-650w-encaixe.png'
     },
 
-    {
-        id: 'z490',
-        tipo: 'placaMae',
-        modelo: 'Z490',
-        socket: 'LGA1200',
-        ddr: 'DDR4',
-        entradasSata: 6,
-        consumoWatts: 25,
-        assetKey: 'placa-mae-b550m',
 
-        imgInventory: '../assets/components/placa_mãe_encaixe_pixelart B550M.png',
-        imgInstalled: '../assets/components/placa_mãe_encaixe_pixelart B550M.png'
+    {
+        id: 'fonte-200w',
+        tipo: 'fonte',
+        modelo: 'Fonte 200w',
+        potenciaWatts: 200,
+        assetKey: 'fonte-200w',
+
+        imgInventory: '../assets/components/fonte-200w-icon.png',
+        imgInstalled: '../assets/components/fonte-200w-encaixe.png'
+    },
+
+        {
+        id: 'ssd-480gb',
+        tipo: 'armazenamento',
+        modelo: 'SSD 480GB',
+        capacidadeGB: 480,
+        consumoWatts: 5,
+        sata: true,
+        assetKey: 'ssd-480gb',
+
+        imgInventory: '../assets/components/ssd-480-icon.png',
+        imgInstalled: '../assets/components/ssd-a400-encaixe.png'
     },
 
     {
         id: 'hd-1tb',
         tipo: 'armazenamento',
-        modelo: 'HD1TB',
-        capacidadeGB: 1000,
+        modelo: 'HD2TB',
+        capacidadeGB: 2000,
         consumoWatts: 5,
         sata: true,
         assetKey: 'hd-1tb',
 
-        imgInventory: '../assets/components/HD_encaixe_pixelart 1TB.png',
-        imgInstalled: '../assets/components/HD_encaixe_pixelart 1TB.png'
+        imgInventory: '../assets/components/hd-2tb-icon.png',
+        imgInstalled: '../assets/components/hd-1tb-encaixe.png'
     }
 
 ]
@@ -180,6 +248,7 @@ function getPieceDetails(peca) {
             return [
                 `Socket: ${peca.socket}`,
                 `Memória: ${peca.ddr}`,
+                `Slots de RAM: ${peca.ramSlots}`,
                 `Portas SATA: ${peca.entradasSata}`,
                 `Consumo: ${peca.consumoWatts} W`
             ];
@@ -248,7 +317,10 @@ function renderInventory() {
                 preview.offsetHeight / 2
             );
             document.querySelectorAll('.drop-zone').forEach(zone => {
-                zone.classList.toggle('is-available', zone.dataset.accept === peca.tipo);
+                zone.classList.toggle(
+                    'is-available',
+                    zone.dataset.accept === peca.tipo && !zone.classList.contains('is-disabled')
+                );
             });
         });
         element.addEventListener('dragend', () => {
@@ -301,7 +373,10 @@ function configureDropZones() {
             const id = event.dataTransfer.getData("text/plain");
             const peca = buscarPecaPorId(id);
             const tipoAceito = dropZone.dataset.accept;
-            if (peca && peca.tipo === tipoAceito) {
+            const slotOcupado = dropZone.classList.contains('ram-zone') && dropZone.querySelector('.installed-item');
+            if (slotOcupado) {
+                showFeedback('Este slot de memória já está ocupado.', 'error');
+            } else if (peca && peca.tipo === tipoAceito && !dropZone.classList.contains('is-disabled')) {
                 const sucesso = instalarPeca(peca);
                 if (sucesso) {
                     const element = document.createElement('div');
@@ -310,11 +385,17 @@ function configureDropZones() {
                     element.dataset.id = peca.id;
                     element.appendChild(createComponentArt(peca, true));
                     dropZone.appendChild(element);
+                    if (peca.tipo === 'placaMae') {
+                        document.querySelector('.motherboard-zone').dataset.board = peca.id;
+                        updateRamSlots();
+                    }
                     showFeedback(`Peça ${peca.modelo} instalada com sucesso!`, 'success');
                 } else {
                     showFeedback(`Falha ao instalar a peça ${peca.modelo}.`, 'error');
                 }
-            } else if(peca &&peca.tipo !== tipoAceito) {
+            } else if (peca && peca.tipo === tipoAceito && dropZone.classList.contains('is-disabled')) {
+                showFeedback('Não há slots de RAM disponíveis nesta placa-mãe.', 'error');
+            } else if (peca && peca.tipo !== tipoAceito) {
                 showFeedback(`Peça ${peca.modelo} não pode ser instalada nesta zona.`, 'error');
             }
         });
@@ -325,7 +406,9 @@ function calcConsumption() {
     let consumption = 0;
     if (computador.placaMae) consumption += computador.placaMae.consumoWatts;
     if (computador.processador) consumption += computador.processador.consumoWatts;
-    if (computador.ram) consumption += computador.ram.consumoWatts;
+    computador.ram.forEach(memoria => {
+        consumption += memoria.consumoWatts;
+    });
     if (computador.placaDeVideo) consumption += computador.placaDeVideo.consumoWatts;
     computador.armazenamentos.forEach(armazenamento => {
         consumption += armazenamento.consumoWatts;
@@ -334,7 +417,7 @@ function calcConsumption() {
 }
 
 function checkAssembly() {
-    return computador.placaMae && computador.processador && computador.ram && computador.placaDeVideo && computador.fonte && computador.armazenamentos.length > 0;
+    return computador.placaMae && computador.processador && computador.ram.length > 0 && computador.placaDeVideo && computador.fonte && computador.armazenamentos.length > 0;
 }
 
 function turnOnComputer() {
@@ -403,11 +486,14 @@ function resetComputer() {
     }
     computador.placaMae = null;
     computador.processador = null;
-    computador.ram = null;
+    computador.ram = [];
     computador.placaDeVideo = null;
     computador.armazenamentos = [];
     computador.fonte = null;
     computador.satasUsadas = 0;
+    const motherboardZone = document.querySelector('.motherboard-zone');
+    delete motherboardZone.dataset.board;
+    updateRamSlots();
 
     const installedItems = document.querySelectorAll('.installed-item');
     installedItems.forEach(item => {
@@ -425,7 +511,7 @@ resetButton.addEventListener('click', () => {
 const computador = {
     placaMae: null,
     processador: null,
-    ram: null,
+    ram: [],
     placaDeVideo: null,
     armazenamentos: [],
     fonte: null,
@@ -435,6 +521,22 @@ const computador = {
 
 function buscarPecaPorId(id) {
     return pecas.find(peca => peca.id === id);
+}
+
+function updateRamSlots() {
+    const motherboardZone = document.querySelector('.motherboard-zone');
+    const ramSlots = document.querySelectorAll('.ram-zone');
+    const limite = computador.placaMae?.ramSlots ?? 0;
+
+    ramSlots.forEach((slot, index) => {
+        const disabled = index >= limite;
+        slot.classList.toggle('is-disabled', disabled);
+        slot.setAttribute('aria-hidden', disabled ? 'true' : 'false');
+    });
+
+    if (!computador.placaMae) {
+        motherboardZone.removeAttribute('data-board');
+    }
 }
 
 function instalarPeca(peca) {
@@ -451,6 +553,7 @@ function instalarPeca(peca) {
             }
             console.log('Placa-mãe instalada com sucesso.');
             computador.placaMae = peca;
+            updateRamSlots();
             return true;
 
         case 'processador':
@@ -468,12 +571,20 @@ function instalarPeca(peca) {
             }
 
         case 'ram':
-            if(computador.ram !== null) {
-                console.log('Já existe uma RAM instalada.');
+            if (!computador.placaMae) {
+                console.log('Instale uma placa-mãe antes da memória RAM.');
+                return false;
+            }
+            if (computador.placaMae.ddr !== peca.ddr) {
+                console.log('A RAM não é compatível com a placa-mãe.');
+                return false;
+            }
+            if (computador.ram.length >= computador.placaMae.ramSlots) {
+                console.log('Não há slots de RAM disponíveis na placa-mãe.');
                 return false;
             }
             if (computador.placaMae && computador.placaMae.ddr === peca.ddr) {
-                computador.ram = peca;
+                computador.ram.push(peca);
                 console.log('RAM instalada com sucesso.');
                 return true;
             } else {
@@ -518,5 +629,6 @@ function instalarPeca(peca) {
     }
 }
 
+updateRamSlots();
 renderInventory();
 configureDropZones();

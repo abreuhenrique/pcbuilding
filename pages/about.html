@@ -6,30 +6,30 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="/styles/style.css">
     <script defer src="/scripts/loadCollaborators.js"></script>
-    <title>Building PC | About</title>
+    <title>PC Building | Sobre</title>
 </head>
 
 <body>
     <header class="index-header">
-        <div class="left-side">
-            <div class="logo-and-name">
-                <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMDAiIGhlaWdodD0iMTAwIiB2aWV3Qm94PSIwIDAgMTAwIDEwMCI+CiAgPHJlY3QgZmlsbD0iI2UyZTJlMiIgd2lkdGg9IjEwMCIgaGVpZ2h0PSIxMDAiLz4KICA8dGV4dCBmaWxsPSIjNjY2NjY2IiBmb250LWZhbWlseT0ibW9ub3NwYWNlIiBmb250LXNpemU9IjEyLjUiIGZvbnQtd2VpZ2h0PSJib2xkIiB4PSI1MCUiIHk9IjUwJSIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZG9taW5hbnQtYmFzZWxpbmU9Im1pZGRsZSI+TG9nbzwvdGV4dD4KPC9zdmc+"
-                    width="18" alt="site_logo">
-                <a href="/index.html">Building PC</a>
-            </div>
-            <div class="vertical-divider"></div> <!-- Como fazer uma divisão vertical melhor? -->
+        <nav class="navbar" aria-label="Navegação principal">
+            <a class="brand" href="/index.html" aria-label="PC Building — página inicial">
+                <span class="logo">
+                    <img src="../assets/icon.png">
+                </span>
+                <span class="brand-name">PC <strong>Building</strong></span>
+            </a>
+            <div class="nav-divider" aria-hidden="true"></div>
             <div class="pages">
-                <a href="" class="notworking" title="Em construção...">Aprender</a>
-                <a href="/pages/about.html">Sobre</a>
-                <a href="/pages/game-menu.html">Jogar</a>
+                <a href="/index.html">Início</a>
+                <a href="" class="notworking" title="Em construção..." aria-disabled="true">Aprender</a>
+                <a href="/pages/about.html" class="active" aria-current="page">Sobre</a>
+                <a href="/pages/game-menu.html" class="nav-play">Jogar</a>
             </div>
-        </div>
+        </nav>
     </header>
     <main class="index-main">
 
-        <img draggable="false"
-            src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMjAwIiBoZWlnaHQ9IjQwMCIgdmlld0JveD0iMCAwIDEyMDAgNDAwIj4KICA8cmVjdCBmaWxsPSIjZTJlMmUyIiB3aWR0aD0iMTIwMCIgaGVpZ2h0PSI0MDAiLz4KICA8dGV4dCBmaWxsPSIjNjY2NjY2IiBmb250LWZhbWlseT0ibW9ub3NwYWNlIiBmb250LXNpemU9IjUwIiBmb250LXdlaWdodD0iYm9sZCIgeD0iNTAlIiB5PSI1MCUiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGRvbWluYW50LWJhc2VsaW5lPSJtaWRkbGUiPlNvYnJlPC90ZXh0Pgo8L3N2Zz4="
-            alt="main_image" class="main-img">
+        <img draggable="false" src="../assets/banner.jpg" alt="Bancada virtual do projeto PC Building" class="main-img">
 
         <div class="content">
 
@@ -123,11 +123,14 @@
 
 
             </div>
-        </div class="content">
+        </div>
 
     </main>
     <footer>
-        <h3>Building PC</h3>
+        <div class="footer-top">
+            <h2>PC <strong>Building</strong></h2>
+            <p>Aprender hardware fica mais fácil quando você coloca a mão na massa.</p>
+        </div>
         <div class="horizontal-divisor"></div>
         <div class="footer-grid">
             <div class="col-about-us">
@@ -139,12 +142,13 @@
                 <a href="https://github.com/abreuhenrique/pcbuilding">Repositório</a>
             </div>
             <div class="col-contacts">
-                <strong>Contatos <small>(Ainda em contrução...)</small></strong>
+                <strong>Contatos <small>(Ainda em construção...)</small></strong>
                 <a href="mailto:">Email</a>
                 <a href="http://" target="_blank" rel="noopener noreferrer">Discord</a>
                 <a href="http://" target="_blank" rel="noopener noreferrer">Github</a>
             </div>
         </div>
+        <p class="footer-bottom">Projeto acadêmico <span aria-hidden="true">•</span> PC Building</p>
     </footer>
 </body>
 

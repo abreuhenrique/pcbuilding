@@ -1,45 +1,91 @@
 <!DOCTYPE html>
 <html lang="pt-br">
-
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" div class="content"="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="/styles/style.css">
-    <title>Building PC | Home</title>
+    <title>PC Building | Início</title>
 </head>
-
 <body>
     <header class="index-header">
-        <div class="left-side">
-            <div class="logo-and-name">
-                <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMDAiIGhlaWdodD0iMTAwIiB2aWV3Qm94PSIwIDAgMTAwIDEwMCI+CiAgPHJlY3QgZmlsbD0iI2UyZTJlMiIgd2lkdGg9IjEwMCIgaGVpZ2h0PSIxMDAiLz4KICA8dGV4dCBmaWxsPSIjNjY2NjY2IiBmb250LWZhbWlseT0ibW9ub3NwYWNlIiBmb250LXNpemU9IjEyLjUiIGZvbnQtd2VpZ2h0PSJib2xkIiB4PSI1MCUiIHk9IjUwJSIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZG9taW5hbnQtYmFzZWxpbmU9Im1pZGRsZSI+TG9nbzwvdGV4dD4KPC9zdmc+"
-                    width="18" alt="site_logo">
-                <a href="/index.html">Building PC</a>
-            </div>
-            <div class="vertical-divider"></div> <!-- Como fazer uma divisão vertical melhor? -->
+        <nav class="navbar" aria-label="Navegação principal">
+            <a class="brand" href="/index.html" aria-label="PC Building — página inicial">
+                <span class="logo">
+                    <img src="assets/icon.png">
+                </span>
+                <span class="brand-name">PC <strong>Building</strong></span>
+            </a>
+            <div class="nav-divider" aria-hidden="true"></div>
             <div class="pages">
-                <a href="" class="notworking" title="Em construção...">Aprender</a>
+                <a href="/index.html" class="active" aria-current="page">Início</a>
+                <a href="" class="notworking" title="Em construção..." aria-disabled="true">Aprender</a>
                 <a href="/pages/about.html">Sobre</a>
-                <a href="/pages/game-menu.html">Jogar</a>
+                <a href="/pages/game-menu.html" class="nav-play">Jogar</a>
             </div>
-        </div>
+        </nav>
     </header>
-    <main class="index-main">
 
-        <img draggable="false"
-            src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMjAwIiBoZWlnaHQ9IjQwMCIgdmlld0JveD0iMCAwIDEyMDAgNDAwIj4KICA8cmVjdCBmaWxsPSIjZTJlMmUyIiB3aWR0aD0iMTIwMCIgaGVpZ2h0PSI0MDAiLz4KICA8dGV4dCBmaWxsPSIjNjY2NjY2IiBmb250LWZhbWlseT0ibW9ub3NwYWNlIiBmb250LXNpemU9IjUwIiBmb250LXdlaWdodD0iYm9sZCIgeD0iNTAlIiB5PSI1MCUiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGRvbWluYW50LWJhc2VsaW5lPSJtaWRkbGUiPkhvbWU8L3RleHQ+Cjwvc3ZnPg=="
-            alt="main_image" class="main-img">
+    <main class="index-main">
+        <section class="hero" aria-labelledby="hero-title">
+            <div class="hero-copy">
+                <p class="eyebrow"><span aria-hidden="true"></span> oficina virtual de hardware</p>
+                <h1 id="hero-title">Aprenda a montar.<br><strong>Construa seu PC.</strong></h1>
+                <p class="hero-description">Conheça cada componente, entenda a compatibilidade entre as peças e pratique a montagem em uma bancada virtual inspirada em uma oficina de verdade.</p>
+                <div class="hero-actions">
+                    <a href="/pages/game-menu.html" class="button button-primary">Começar montagem <span aria-hidden="true">→</span></a>
+                    <a href="#projeto" class="button button-secondary">Conhecer o projeto</a>
+                </div>
+                <ul class="hero-highlights" aria-label="Destaques do projeto">
+                    <li><span>01</span> Aprenda</li>
+                    <li><span>02</span> Escolha</li>
+                    <li><span>03</span> Monte</li>
+                </ul>
+            </div>
+            <figure class="hero-visual">
+                <div class="image-frame">
+                    <img src="/assets/game-menu.jpeg" alt="Bancada pixel art com componentes para montagem de computador">
+                </div>
+                <figcaption><span class="status-dot" aria-hidden="true"></span> bancada pronta para montagem</figcaption>
+            </figure>
+        </section>
 
         <div class="content">
+            <section class="project-section" id="projeto" aria-labelledby="project-title">
+                <div class="section-heading">
+                    <p class="section-kicker">Conhecimento na prática</p>
+                    <h2 id="project-title">Projeto <i>PC Building</i></h2>
+                    <p>Uma experiência educativa que transforma o processo de montagem de computadores em uma jornada visual, prática e acessível — mesmo para quem está começando agora.</p>
+                </div>
 
-            <h3>Projeto <i>Building PC</i></h3>
+                <div class="feature-grid">
+                    <article class="feature-card">
+                        <span class="feature-number">01</span>
+                        <div><h3>Conheça as peças</h3><p>Identifique os componentes essenciais e descubra a função de cada um.</p></div>
+                    </article>
+                    <article class="feature-card featured">
+                        <span class="feature-number">02</span>
+                        <div><h3>Teste combinações</h3><p>Explore opções de hardware e entenda como a compatibilidade funciona.</p></div>
+                    </article>
+                    <article class="feature-card">
+                        <span class="feature-number">03</span>
+                        <div><h3>Monte na bancada</h3><p>Arraste, encaixe e complete sua máquina em um ambiente interativo.</p></div>
+                    </article>
+                </div>
 
-            <section class="game-demo-section">
-                <video width="560" height="315" controls preload="metadata">
-                    <source src="assets/videos/montagem.m4v" type="video/mp4">
-                    Seu navegador não suporta a reprodução deste vídeo.
-                </video>
-                <a href="/pages/game-menu.html" class="play-now-btn">Jogue Agora!</a>
+                <div class="game-demo-section">
+                    <div class="video-frame">
+                        <video controls preload="metadata" poster="/assets/game.jpeg">
+                            <source src="/assets/videos/montagem.m4v" type="video/mp4">
+                            Seu navegador não suporta a reprodução deste vídeo.
+                        </video>
+                    </div>
+                    <div class="demo-copy">
+                        <p class="section-kicker">Simulador interativo</p>
+                        <h3>Da bancada vazia ao PC completo</h3>
+                        <p>Escolha componentes compatíveis e posicione cada peça no local correto. O jogo oferece uma forma simples de praticar a sequência de montagem antes de lidar com hardware real.</p>
+                        <a href="/pages/game-menu.html" class="play-now-btn">Jogue Agora! <span aria-hidden="true">→</span></a>
+                    </div>
+                </div>
             </section>
 
             <div class="updates">
@@ -50,7 +96,7 @@
                 </div>
             </div>
 
-        </div class="content">
+        </div>
 
     </main>
     <dialog class="update-modal" id="update-modal" aria-labelledby="update-modal-title">
@@ -63,26 +109,23 @@
         <p id="update-modal-content"></p>
     </dialog>
     <footer>
-        <h3>Building PC</h3>
+        <div class="footer-top">
+            <h2>PC <strong>Building</strong></h2>
+            <p>Aprender hardware fica mais fácil quando você coloca a mão na massa.</p>
+        </div>
         <div class="horizontal-divisor"></div>
         <div class="footer-grid">
-            <div class="col-about-us">
-                <strong>Sobre Nós</strong>
-                <a href="">Sobre</a>
-            </div>
-            <div class="col-contribute">
-                <strong>Contribua com o projeto</strong>
-                <a href="https://github.com/abreuhenrique/pcbuilding">Repositório</a>
-            </div>
+            <div class="col-about-us"><strong>Sobre Nós</strong><a href="/pages/about.html">Sobre</a></div>
+            <div class="col-contribute"><strong>Contribua com o projeto</strong><a href="https://github.com/abreuhenrique/pcbuilding">Repositório</a></div>
             <div class="col-contacts">
-                <strong>Contatos <small>(Ainda em contrução...)</small></strong>
+                <strong>Contatos <small>(Ainda em construção...)</small></strong>
                 <a href="mailto:">Email</a>
                 <a href="http://" target="_blank" rel="noopener noreferrer">Discord</a>
                 <a href="http://" target="_blank" rel="noopener noreferrer">Github</a>
             </div>
         </div>
+        <p class="footer-bottom">Projeto acadêmico <span aria-hidden="true">•</span> PC Building</p>
     </footer>
     <script src="/scripts/loadUpdates.js" defer></script>
 </body>
-
 </html>
