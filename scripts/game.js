@@ -10,8 +10,8 @@ const pecas = [
         consumoWatts: 20,
         assetKey: 'placa-mae-b550m',
 
-        imgInventory: '../assets/components/placa_mãe_encaixe_pixelart B550M.png',
-        imgInstalled: '../assets/components/placa_mãe_encaixe_pixelart B550M.png'
+        imgInventory: '../assets/components/mb-b550m-encaixe.png',
+        imgInstalled: '../assets/components/mb-b550m-encaixe.png'
 
     },
 
@@ -26,8 +26,8 @@ const pecas = [
         consumoWatts: 25,
         assetKey: 'placa-mae-b660m',
 
-        imgInventory: '../assets/components/Placa_mãe_encaixe_B660M.png',
-        imgInstalled: '../assets/components/Placa_mãe_encaixe_B660M.png'
+        imgInventory: '../assets/components/mb-b660m-encaixe.png',
+        imgInstalled: '../assets/components/mb-b660m-encaixe.png'
     },
 
         {
@@ -41,8 +41,8 @@ const pecas = [
         consumoWatts: 25,
         assetKey: 'placa-mae-b550m',
 
-        imgInventory: '../assets/components/placa_mãe_encaixe_pixelart B550M.png',
-        imgInstalled: '../assets/components/placa_mãe_encaixe_pixelart B550M.png'
+        imgInventory: '../assets/components/mb-z490-encaixe.png',
+        imgInstalled: '../assets/components/mb-z490-encaixe.png'
     },
     
     {
@@ -53,8 +53,8 @@ const pecas = [
         consumoWatts: 65,
         assetKey: 'processador-ryzen-5600',
 
-        imgInventory: '../assets/components/processador_encaixe_pixelart ryzen 5 5600.png',
-        imgInstalled: '../assets/components/processador_encaixe_pixelart ryzen 5 5600.png'
+        imgInventory: '../assets/components/cpu-r5-5600-encaixe.png',
+        imgInstalled: '../assets/components/cpu-r5-5600-encaixe.png'
     },
 
     {
@@ -65,8 +65,8 @@ const pecas = [
         consumoWatts: 65,
         assetKey: 'processador-intel-i5',
 
-        imgInventory: '../assets/components/Processador_encaixe_intel_i5.png',
-        imgInstalled: '../assets/components/Processador_encaixe_intel_i5.png'
+        imgInventory: '../assets/components/cpu-i5-12400-encaixe.png',
+        imgInstalled: '../assets/components/cpu-i5-12400-encaixe.png'
     },
 
     {
@@ -78,8 +78,8 @@ const pecas = [
         consumoWatts: 5,
         assetKey: 'memoria-ram-ddr3',
 
-        imgInventory: '../assets/components/memória_ram_slot_DDR3.png',
-        imgInstalled: '../assets/components/memória_ram_slot_DDR3.png'
+        imgInventory: '../assets/components/ram-ddr4-encaixe.png',
+        imgInstalled: '../assets/components/ram-ddr4-encaixe.png'
     },
 
     {
@@ -91,8 +91,8 @@ const pecas = [
         consumoWatts: 5,
         assetKey: 'memoria-ram-ddr4-fury',
 
-        imgInventory: '../assets/components/memória_ram_slot_DDR4_Fury.png',
-        imgInstalled: '../assets/components/memória_ram_slot_DDR4_Fury.png'
+        imgInventory: '../assets/components/ram-ddr5-encaixe.png',
+        imgInstalled: '../assets/components/ram-ddr5-encaixe.png'
     },
 
     {
@@ -102,8 +102,8 @@ const pecas = [
         consumoWatts: 120,
         assetKey: 'placa-video-gtx1660',
 
-        imgInventory: '../assets/components/Placa_vídeo_encaixe_pixelart GTX 1660.png',
-        imgInstalled: '../assets/components/Placa_vídeo_encaixe_pixelart GTX 1660.png'
+        imgInventory: '../assets/components/gpu-gtx-1660-encaixe.png',
+        imgInstalled: '../assets/components/gpu-gtx-1660-encaixe.png'
     },
 
     {
@@ -113,8 +113,8 @@ const pecas = [
         consumoWatts: 185,
         assetKey: 'placa-video-rx580',
 
-        imgInventory: '../assets/components/placa_vídeo_encaixe_iRX580.png',
-        imgInstalled: '../assets/components/placa_vídeo_encaixe_iRX580.png'
+        imgInventory: '../assets/components/gpu-rx580-encaixe.png',
+        imgInstalled: '../assets/components/gpu-rx580-encaixe.png'
     },
 
     {
@@ -126,8 +126,8 @@ const pecas = [
         sata: true,
         assetKey: 'ssd-a400',
         
-        imgInventory: '../assets/components/SSD_encaixe_pixelart A400.png',
-        imgInstalled: '../assets/components/SSD_encaixe_pixelart A400.png'
+        imgInventory: '../assets/components/ssd-a400-encaixe.png',
+        imgInstalled: '../assets/components/ssd-a400-encaixe.png'
     },
 
     {
@@ -137,8 +137,8 @@ const pecas = [
         potenciaWatts: 550,
         assetKey: 'fonte-550w',
 
-        imgInventory: '../assets/components/fonte_encaixe_pixelart 550W.png',
-        imgInstalled: '../assets/components/fonte_encaixe_pixelart 550W.png'
+        imgInventory: '../assets/components/fonte-650w-encaixe.png',
+        imgInstalled: '../assets/components/fonte-650w-encaixe.png'
     },
 
     {
@@ -150,8 +150,8 @@ const pecas = [
         sata: true,
         assetKey: 'hd-1tb',
 
-        imgInventory: '../assets/components/HD_encaixe_pixelart 1TB.png',
-        imgInstalled: '../assets/components/HD_encaixe_pixelart 1TB.png'
+        imgInventory: '../assets/components/hd-1tb-encaixe.png',
+        imgInstalled: '../assets/components/hd-1tb-encaixe.png'
     }
 
 ]
