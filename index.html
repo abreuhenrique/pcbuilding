@@ -88,26 +88,26 @@
                 </div>
             </section>
 
-            <section class="updates" aria-labelledby="updates-title">
-                <div class="section-heading compact">
-                    <p class="section-kicker">Diário da oficina</p>
-                    <h2 id="updates-title">Últimas atualizações</h2>
+            <div class="updates">
+                <h3>Ultimas atualizações</h3>
+
+                <div class="update-view" id="updates-list" aria-live="polite">
+                    <p class="updates-status">Carregando atualizações...</p>
                 </div>
-                <div class="update-view">
-                    <div class="empty-update"><span aria-hidden="true">//</span><h3>Atualizações em breve...</h3><p>Novos conteúdos e melhorias estão sendo preparados na bancada.</p></div>
-                </div>
-                <template class="update_template">
-                    <img draggable="false" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI4MDAiIGhlaWdodD0iNjAwIiB2aWV3Qm94PSIwIDAgODAwIDYwIj48cmVjdCBmaWxsPSIjZTJlMmUyIiB3aWR0aD0iODAwIiBoZWlnaHQ9IjYwMCIvPjwvc3ZnPg==" alt="" class="update_template_img">
-                    <p class="update_template_date_upload">XX/XX/XXXX às XXhXX</p>
-                    <p class="update_template_header">Título Update...</p>
-                    <p class="update_template_paragraph">Corpo da matéria...</p>
-                </template>
             </div>
 
         </div>
 
     </main>
-
+    <dialog class="update-modal" id="update-modal" aria-labelledby="update-modal-title">
+        <button class="update-modal-close" id="update-modal-close" type="button" aria-label="Fechar atualização">
+            &times;
+        </button>
+        <img class="update-modal-img" id="update-modal-img" alt="">
+        <h2 id="update-modal-title"></h2>
+        <p class="update-modal-description" id="update-modal-description"></p>
+        <p id="update-modal-content"></p>
+    </dialog>
     <footer>
         <div class="footer-top">
             <h2>PC <strong>Building</strong></h2>
@@ -126,5 +126,6 @@
         </div>
         <p class="footer-bottom">Projeto acadêmico <span aria-hidden="true">•</span> PC Building</p>
     </footer>
+    <script src="/scripts/loadUpdates.js" defer></script>
 </body>
 </html>
