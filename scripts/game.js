@@ -64,10 +64,10 @@ const pecas = [
         {
         id: 'i5-457',
         tipo: 'processador',
-        modelo: 'Intel Core i5 457',
+        modelo: 'Intel Core i5 4570',
         socket: '1155',
         consumoWatts: 85,
-        assetKey: 'processador-i5457',
+        assetKey: 'processador-i54570',
 
         imgInventory: '../assets/components/cpu-i5457-icon.png',
         imgInstalled: '../assets/components/cpu-i5-457-encaixe.png'
